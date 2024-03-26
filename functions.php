@@ -9,7 +9,7 @@ add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
 
 add_theme_support('title-tag');
 
-
+// pour afficher les menus header et footer
 function register_menus() {
     register_nav_menus(
         array(
