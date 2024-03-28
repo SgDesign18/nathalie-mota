@@ -1,14 +1,22 @@
 /*
-Theme Name: Mon Thème Personnalisé
+Theme Name: Nathalie Mota
 Description: Thème WordPress personnalisé pour Nathalie Mota Photographe
 Author: Sandrine Gaston
 Version: 1.0
 */
 
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 *{
     margin: 0;
     padding: 0;
 }
+
+body{
+    font-family: "Space Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+  }
 
 header {
     width: 100%;
@@ -39,22 +47,22 @@ footer {
     margin: 0 auto;
     align-items: center;
     justify-content: space-between;
-    padding: 25px; /* Ajoutez un padding pour l'espace autour du contenu */
+    padding: 25px; 
 }
 
 .logo {
-    flex: 0 0 auto; /* Permet au logo de ne pas se rétrécir ou s'étirer */
+    flex: 0 0 auto; 
 }
 
 .nav {
-    flex: 1; /* Fait en sorte que la nav prenne tout l'espace restant */
-    text-align: right; /* Aligne les éléments de la nav à droite */
+    flex: 1; 
+    text-align: right; 
 }
 
-/* Optionnel : Styles pour le logo */
+
 .logo img {
-    max-width: 100%; /* Assurez-vous que le logo ne dépasse pas de son conteneur */
-    height: auto; /* Permet au logo de conserver ses proportions */
+    max-width: 80%; 
+    height: auto; 
 }
 
 
@@ -66,6 +74,11 @@ footer {
     text-decoration: none;
     text-transform: uppercase;
     margin-right: 20px;
+    color: black;
+}
+
+.menu-header a:hover{
+    font-weight: 700;
 }
 
 .hero{
