@@ -18,3 +18,22 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+  // Gestion du menu responsive
+  (function ($) {
+    $(document).ready(function () {
+      // Gestion de la fermeture et de l'ouverture du menu
+      // dans une modale pour la version mobile
+      $(".btn-modal").click(function (e) {
+        $(".modal-content").toggleClass("animate-modal");
+        $(".modal-content").toggleClass("open");
+        $(".btn-modal").toggleClass("close");
+      });
+      $("a").click(function () {
+        if ($(".modal-content").hasClass("open")) {
+          $(".modal-content").removeClass("animate-modal");
+          $(".modal-content").removeClass("open");
+          $(".btn-modal").removeClass("close");
+        }
+      });
+    });
+  })(jQuery);

@@ -1,7 +1,10 @@
 <?php
 
 
-add_theme_support('title-tag');
+add_theme_support('title-tag'); // Ajouter la prise en charge des titres
+add_theme_support( 'post-thumbnails' ); // Ajouter la prise en charge des images mises en avant
+
+
 
 // Ajouter la prise en charge des menus
 function custom_theme_setup() {
@@ -13,6 +16,8 @@ function custom_theme_setup() {
 }
 add_action('after_setup_theme', 'custom_theme_setup');
 
+
+
 // Ajouter le lien personnalisé au menu principal
 function add_custom_menu_item($items, $args) {
     if ($args->theme_location == 'primary') {
@@ -23,14 +28,19 @@ function add_custom_menu_item($items, $args) {
 add_filter('wp_nav_menu_items', 'add_custom_menu_item', 10, 2);
 
 
+
+
 function theme_enqueue_scripts() {
     // Enqueue stylesheet - Ajout de mon style.css
+    wp_enqueue_style('bootstrap-css', get_template_directory_uri() . '/css/bootstrap.css');
     wp_enqueue_style('theme-style', get_stylesheet_directory_uri() . '/style.css');
     wp_enqueue_style('contact-modal-style', get_stylesheet_directory_uri() . '/css/contact-modal.css');
 
-    // Enqueue scripts
+    // Enqueue scripts - Ajout Jquery et js
+    wp_enqueue_script('bootstrap-js', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), '', true);
     wp_enqueue_script('jquery');
     wp_enqueue_script('theme-scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0', true);
 }
 add_action('wp_enqueue_scripts', 'theme_enqueue_scripts');
+
 

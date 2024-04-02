@@ -25,13 +25,14 @@
     background:white;
     max-width:600px;
     width:80%;
+    height: 100%;
     padding:15px 0;
     border: 5px solid #000000;
 }
 
 .popup-close{
     /* position:absolute; */
-    height:110px;
+    height:100px;
     width:100%;
     cursor:pointer;
     transition:all 0.4s ease;
@@ -41,33 +42,29 @@
     background-image: url('../assets/images/contact.png');
     background-repeat : repeat;
     overflow : hidden;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     width:100%;
-    height: 49px;
+    height: 48px;
 }
 
 /* Position des 2 bannières pour le titre */
-.popup-title .p1 {
-    background-position-x: left -48%;
-    background-color: aqua;
+.img-h {
+    background-position-x: left -50%;
 }
 
-.popup-title .p2 {
-    background-position-x: left -33%;
+.img-b {
+    background-position-x: left -30%;
+    margin-bottom: 15px;
 }
 
 .popup-informations {    
     display:flex;
     justify-content:center;
     align-items:center;
-
-    max-width: 265px;
+    max-width: 263px;
     margin: auto;
 }
 
-.wpcf7-form p {
-    padding-top: 25px;
-}
 
 .wpcf7-form p label {
     font-family: 'Poppins', sans-serif;
@@ -98,6 +95,7 @@
 
 .wpcf7-form p textarea {
     padding: 10px;
+    height: 210px;
 }
 
 .wpcf7-form p .wpcf7-text,

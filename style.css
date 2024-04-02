@@ -55,6 +55,7 @@ footer ul{
     padding-top: 80px;
     width: 100%;
     margin: 0 auto;
+
 }
 
 .header{
@@ -63,7 +64,7 @@ footer ul{
     margin: 0 auto;
     align-items: center;
     justify-content: space-between;
-    padding: 25px; 
+   
 }
 
 .logo {
@@ -77,8 +78,9 @@ footer ul{
 
 
 .logo img {
-    max-width: 80%; 
-    height: auto; 
+    width: 220px;
+    height: auto;
+    margin: 40px;
 }
 
 
@@ -103,3 +105,241 @@ footer ul{
     background-color: rgb(129, 119, 119);
 }
 
+.card-img-top {
+    object-fit: cover !important;
+    width: 100%; 
+    height: 300px;
+}
+
+#page-blog{
+    width: 80% !important ;
+    margin: 20px auto !important ;
+}
+
+.content-single-post{
+    width: 80% !important ;
+    margin: 0 auto !important ;
+}
+
+.single-banner{
+    object-fit: contain !important;
+    width: 100%; 
+    max-width: 1440px;
+    height: 500px;
+    overflow: hidden;
+    margin: auto;
+    background-size : cover;
+    margin-bottom: 50px;
+}
+
+.single-banner img{
+    width: 100%;
+    background-size : cover;
+}
+
+/*------------------------------------Menu----------------------------------------------*/
+
+#menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+#menu-header .menu-header-menu-container,
+#menu-header #modal-burger {
+    margin-right: 40px;    
+}
+
+#menu-header .menu-header-menu-container {
+    opacity: 1;
+    transition: all .3s ease-in-out;
+}
+
+
+#menu-header .menu-header-menu-container a {
+    padding: 0;
+}
+
+/* Menu mobile */
+.btn-modal {
+    opacity: 1;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    background-color: transparent;
+    gap: 8px;
+    top: -100px;
+    width: 28px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    right: 3em;
+    cursor: pointer;  
+  }
+  
+.btn-modal .line {
+    opacity: 1;
+    /* opacity: 0; */
+    height: 1.7px;
+    background-color: #000;
+    display: block;
+    width: 100%;
+    margin: 0;
+    transition: all .3s ease-in-out;
+  }
+  
+  /* Création du bouton pour fermer */
+#modal-burger:hover .l2,
+.btn-modal.close .l2 {
+    opacity: 0;
+  }
+
+.btn-modal.close .l1{
+    transform: rotate(45deg) translate3d(8px, 6px, 0);
+  }
+
+.btn-modal.close .l3 {
+    transform: rotate(-45deg) translate3d(8px, -6px, 0);
+  }
+
+.modal-content {
+    position: absolute;
+    right: 0;
+    opacity: 0;
+    top: 70px;
+    width: 100vw;
+    height: 0;
+    background: #E00000; 
+    visibility: hidden;
+    transition: all .3s ease-in-out;
+    text-align: center;
+}
+
+#modal-content .menu-header-menu-container {
+    margin: auto;
+    height: auto;
+    width: 100vw;
+}
+
+#modal-content .menu-header-menu-container ul,
+#modal-content .menu-header-menu-container li {  
+    display: flex;  
+    justify-content: center;
+    text-align: center;    
+    /* align-items: center */
+}
+
+#modal-content .menu-header-menu-container ul {    
+    flex-direction: column;
+    justify-content: space-around;    
+    padding: 35px 20px 25px;
+}
+
+#modal-content .menu-header-menu-container li {   
+    height: 80px;
+}
+
+#modal-content a {
+    color: white;
+    font-size: 23px;
+}
+
+.animate-modal {
+    opacity: 1;
+    /* width: 100vw; */
+    height: auto;  
+    animation: move-down 2s 300ms both;
+}
+
+/* Pour faire apparaitre la moadle en descendant et avec agmentatation de l'opacité */
+@keyframes move-down {
+    0% {
+      transform: translateY(-400px);
+      opacity: 0;
+    }  
+    100% {
+      transform: translateY(0);
+      visibility: visible;
+    }
+  }
+
+
+
+  .pagination-blog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 100px;
+  }
+  
+  .site__navigation {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .site__navigation__prev,
+  .site__navigation__next {
+    width: 45%;
+    text-align: center;
+  }
+  
+  .site__navigation__prev img,
+  .site__navigation__next img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .site__navigation__prev h4,
+  .site__navigation__next h4 {
+    margin-top: 10px;
+  }
+  
+
+
+
+
+
+
+    /*  **********************************  */
+/*    Media query : max-width: 950px    */
+/*  **********************************  */
+@media all and (max-width: 950px) {
+    .container-header img {
+    width: 138px;
+    }
+
+    #menu-header .menu-header {
+        opacity: 0;
+    }
+
+    #menu-header .menu-header-menu-container a{
+        display: inline-block;
+        transform: translateY(-200px);
+        height: 0;
+    }
+
+    #modal-content .menu-header-menu-container {
+        opacity: 1;
+        height: auto;
+    }
+    
+    #modal-content .menu-header-menu-container a{
+        display: inline-block;
+        transform: translateY(0);
+        height: 0;
+    }
+    
+    #modal-burger {
+        opacity: 1;
+        top: 0;
+    }
+
+    #menu-header .menu-header-menu-container,
+    #menu-header #modal-burger {
+        margin-right: 0;
+    }
+}
