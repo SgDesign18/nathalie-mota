@@ -1,52 +1,163 @@
 <?php
+
 /**
- * The single : ATRICLE BLOG 
+ * The single : Single photo 
  *
  * @package WordPress
  * @subpackage Nathalie-Mota
  */
 
-	get_header();
+get_header();
 ?>
 
 <div id="wrap">
     <section id="content">
-		<?php if( have_posts() ) : while( have_posts() ) : the_post(); ?>
-			
-		<article class="post">
-			<?php 
-				// permet d’afficher l’image mise en avant
-				the_post_thumbnail(); 
-			?>
+        <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-			<h1><?php the_title(); ?></h1>
 
-			<div class="post__meta">
-				<?php echo get_avatar( get_the_author_meta( 'ID' ), 40 ); ?>
-				<p>
-				Publié le <?php the_date(); ?>
-				par <?php the_author(); ?>
-				Dans la catégorie <?php the_category(); ?>
-				Avec les étiquettes <?php the_tags(); ?>
-				</p>
-			</div>
+                <div class="container-fluid py-5">
+                    <div class="container">
+                        <div class="row g-5">
 
-			<div class="post__content">
-				<?php the_content(); ?>
-			</div>
-		</article>
-		<?php endwhile; endif; ?>
+                            <div class="col-lg-6">
+                                <span class="space"></span>
+                                <div class="section-title mb-4">
+                                    <h2 class="single-title"><?php the_title(); ?></h2>
+                                </div>
 
-		<p>Navigation</p>
-		<div class="site__navigation flexrow">
-			<div class="site__navigation__prev">
-				<?php previous_post_link( 'Article Précédent<br>%link' ); ?>
-			</div>
-			<div class="site__navigation__next">
-				<?php next_post_link( 'Article Suivant<br>%link' ); ?> 
-			</div>
-		</div>
+                                <div class="row g-3">
+                                    <div class="col-sm-12 infos">
+                                        <p class="mb-3">Référence : <?php echo get_field('reference_de_la_photo'); ?></p>
+                                        <p class="mb-3"><?php
+                                                        $categories = get_the_terms(get_the_ID(), 'categorie');
+                                                        if ($categories && !is_wp_error($categories)) {
+                                                            $category_names = array();
+                                                            foreach ($categories as $category) {
+                                                                $category_names[] = $category->name;
+                                                            }
+                                                            echo 'Catégorie : ' . implode(', ', $category_names);
+                                                        } else {
+                                                            echo 'Catégorie : Non définie';
+                                                        }
+                                                        ?>
+                                        </p>
+
+                                        <p class="mb-3">Format : <?php $formats = get_the_terms(get_the_ID(), 'format');
+                                                                    if ($formats && !is_wp_error($formats)) {
+                                                                        $format_names = array();
+                                                                        foreach ($formats as $format) {
+                                                                            $format_names[] = $format->name;
+                                                                        }
+                                                                        echo implode(', ', $format_names);
+                                                                    } else {
+                                                                        echo 'Non défini';
+                                                                    }
+                                                                    ?> </p>
+                                        <p class="mb-3">Type : <?php echo get_field('type'); ?></p>
+                                        <p class="mb-3">Année : <?php the_date('Y'); ?></p>
+                                        <span class="hr hr-mob"></span>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6" style="min-height: 500px;">
+                                <div class="position-relative h-100">
+                                    <img class="position-absolute w-100 h-100 single-img" src="<?php echo esc_url(get_the_post_thumbnail_url()); ?>" alt="<?php echo esc_attr(get_the_title()); ?>" style="object-fit: cover;">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row g-5 single-cmd">
+                            <div class="col-lg-3 typo2">
+                                <p>Cette photo vous intéresse ?</p>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="button-single">
+                                    <button id="btn-cmd">Contact</button>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-img-min">
+                                <div class="cmd-img">
+                                    <div class="img-min" data-photo-id="<?php echo get_the_ID(); ?>">
+                                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/min.jpg" alt="miniature bouquet de fleur">
+                                        <?php
+                                        // Récupérer l'ID de la prochaine photo
+                                        //  $next_photo = get_adjacent_post(false, '', false, 'photo');
+                                        //  if ($next_photo) {
+                                        //     $next_photo_id = $next_photo->ID;
+                                        //     echo get_the_post_thumbnail($next_photo_id, 'thumbnail');
+                                        //   } else {
+                                        //      echo 'img';
+                                        //  }
+                                        ?>
+                                    </div>
+                                    <div class="fleches">
+                                        <span id="arrow-left" class="arrow" data-photo-id="<?php echo get_the_ID(); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/precedent.png" alt="fleche gauche"></span>
+                                        <span id="arrow-right" class="arrow" data-photo-id="<?php echo get_the_ID(); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/suivant.png" alt="fleche droite"></span>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <span class="hr"></span>
+                        <h3 class="single-other">VOUS AIMEREZ AUSSI ...</h3>
+
+                        <div class="row g-5">
+                            <?php
+                            // Récupérer la catégorie de la photo actuelle
+                            $categories = get_the_terms(get_the_ID(), 'categorie');
+                            if ($categories && !is_wp_error($categories)) {
+                                $category_slugs = array();
+                                foreach ($categories as $category) {
+                                    $category_slugs[] = $category->slug;
+                                }
+
+                                // Récupérer les articles de type "photo" avec WP_Query et filtrer par catégorie
+                                $args = array(
+                                    'post_type' => 'photo', // Slug de CPT UI
+                                    'posts_per_page' => 2, // Limiter à 2 photos
+                                    'tax_query' => array(
+                                        array(
+                                            'taxonomy' => 'categorie',
+                                            'field' => 'slug',
+                                            'terms' => $category_slugs,
+                                        ),
+                                    ),
+                                );
+
+                                $query = new WP_Query($args);
+
+                                if ($query->have_posts()) :
+                                    while ($query->have_posts()) : $query->the_post();
+                            ?>
+                                        <div class="col-lg-6">
+                                            <div class="other-img">
+                                                <div class="photo-other">
+                                                    <a href="<?php the_permalink(); ?>" class="photo-link" title="Voir les détails de la photo"><?php the_post_thumbnail('galerie', array('class' => 'photo-thumbnail')); ?></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                            <?php
+                                    endwhile;
+                                    wp_reset_postdata();
+                                else :
+                                    echo 'Aucune photo trouvée.';
+                                endif;
+                            }
+                            ?>
+                        </div>
+
+
+                    </div><!--fin container-->
+                </div><!--fin container-fluid-->
+
+        <?php endwhile;
+        endif; ?>
+
     </section>
 </div>
-<br>
-<?php get_footer();?>
+
+
+<?php get_footer(); ?>

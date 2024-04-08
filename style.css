@@ -178,6 +178,11 @@ footer ul{
     right: 3em;
     cursor: pointer;  
   }
+
+  #menu-header button{
+    border: none !important;
+
+  }
   
 .btn-modal .line {
     opacity: 1;
@@ -197,11 +202,11 @@ footer ul{
   }
 
 .btn-modal.close .l1{
-    transform: rotate(45deg) translate3d(8px, 6px, 0);
+    transform: rotate(45deg) ;
   }
 
 .btn-modal.close .l3 {
-    transform: rotate(-45deg) translate3d(8px, -6px, 0);
+    transform: rotate(-45deg) ;
   }
 
 .modal-content {
@@ -265,8 +270,6 @@ footer ul{
     }
   }
 
-
-
   .pagination-blog {
     display: flex;
     flex-direction: column;
@@ -299,15 +302,279 @@ footer ul{
   }
   
 
+/* HERO */
+.hero-area .hero-thumbnail {
+    position: relative;
+    margin: auto;
+    align-items: center;
+    width: 100%;
+    max-height: 966px;    
+    overflow: hidden;
+}
+
+.hero-area img {    
+    margin: auto;
+    /* object-fit: contain; */
+    object-fit: cover;
+    object-position: 50% 50%;
+    min-width: 100%;
+    height: auto;
+    max-height: 966px;
+}
+
+.hero-area .title-hero {    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    width: 100%;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 96px;
+    line-height: 142px;
+    font-style: italic;
+    color: transparent;
+    /* text-shadow: 0 0 2px rgb(255, 255, 255), 0 0 2px rgb(255, 255, 255); */
+    /* text-stroke: 2px rgb(255, 255, 255); */
+    -webkit-text-stroke: 2px rgb(255, 255, 255);
+}
+
+
+.photo-grid {
+    width: 80%;
+    margin: 20px auto;
+    display: grid;
+    gap: 15px;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+}
+
+.photo-item {
+    width: 580px; /* Utilisez une largeur de 100% pour occuper tout l'espace disponible dans la grille */
+    height: 500px; /* Utilisez une hauteur de 100% pour assurer que chaque élément de grille a la même hauteur */
+    position: relative;
+}
+
+.photo-thumbnail {
+    width: 100%; /* Utilisez une largeur de 100% pour que l'image remplisse entièrement son conteneur */
+    height: 100%; /* Utilisez une hauteur de 100% pour que l'image remplisse entièrement son conteneur */
+    object-fit: cover; /* Utilisez "cover" pour que l'image conserve ses proportions tout en remplissant le conteneur */
+    margin: 0; /* Supprimez la marge pour éviter les espaces supplémentaires autour de l'image */
+}
+
+.button-plus{
+    display: flex;
+    justify-content: center;
+    height: 250px;
+    align-items: center;
+}
+
+#load-more-btn{
+    text-align: center;
+    width: 272px;
+    height: 50px;
+    color: black;
+    border: 1px solid black;
+}
+
+#load-more-btn:hover{
+    cursor: pointer;
+    background-color: #E00000;
+}
+
+.photo-reference{
+    position: absolute;
+    left:10px;
+    bottom: 10px;
+    color: white;
+}
+
+.photo-category{
+    position: absolute;
+    right:10px;
+    bottom: 10px;
+    color: white !important;
+}
+.photo-category a{
+
+    color: white !important;
+}
+.photo-details{
+    position:absolute;
+	top:0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+
+.photo-lightbox{
+    position: absolute;
+    right:10px;
+    top: 10px;
+}
+
+.overlay{
+    opacity: 0;
+}
+
+.photo-item:hover .overlay{
+    opacity: 1;
+    color: white !important;
+}
+
+.photo-item > img{
+    opacity: 1;
+}
+
+.photo-item:hover > img{
+    opacity: 0.5;
+}
+
+.photo-item:hover{
+    background-color: #000;
+}
+
+/*--------------------------------------Page Single Photo ---------------------------------------------*/
+
+.single-title {
+    font-size: 66px !important;
+    font-weight: 400;
+    text-transform: uppercase !important;
+    line-height: 58px;
+    word-spacing: 0px;
+  }
+
+.hr{
+    border: 1px solid black;
+    background-color: #000;
+    width: 100%;
+    height: 1px;
+    display: block;
+}
+
+.space{
+    display: block;
+    height: 300px;
+}
+
+.single-img{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-left: 10px;
+}
+
+.section-title h2{
+    width: 80%;
+}
+.infos p{
+    text-transform: uppercase;
+    font-size: 18px;
+}
+
+.single-cmd{
+    position: relative;
+    display: flex;
+    height: 120px;
+
+    justify-content: center;
+    align-items: center;
+}
+
+
+#btn-cmd{
+    text-align: center;
+    width: 100%;
+    height: 50px;
+    color: black;
+    border: 1px solid black;
+}
+
+#btn-cmd:hover{
+    cursor: pointer;
+    background-color: #E00000;
+}
+
+.typo2{
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    margin-top: 10px;
+}
+
+.single-other{
+    margin:50px 0 50px 0 ;
+}
+
+.img-min{
+    position: absolute;
+    right:15px;
+    top:-50px;
+    height: 71px;
+    width: 81px;
+    background-color: rgb(230, 228, 225);   
+}
+
+.fleches{
+    position: absolute;
+    right:25px;
+    bottom: -50px;
+}
+
+.arrow {
+    display: inline-block;
+    text-align: center;
+    line-height: 20px; /* Centrez verticalement le texte */
+    cursor: pointer; /* Curseur de la souris sur les flèches */
+}
+
+
+
+.photo-other:hover .overlay{
+    opacity: 1;
+    color: white !important;
+}
+
+.photo-other > img{
+    opacity: 1;
+}
+
+.photo-other:hover > img{
+    opacity: 0.5;
+}
+
+.photo-other:hover{
+    background-color: #000;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 
     /*  **********************************  */
-/*    Media query : max-width: 950px    */
+/*    Media query : max-width: 992px    */
 /*  **********************************  */
-@media all and (max-width: 950px) {
+@media all and (max-width: 992px) {
     .container-header img {
     width: 138px;
     }
@@ -342,4 +609,31 @@ footer ul{
     #menu-header #modal-burger {
         margin-right: 0;
     }
+
+    .cmd-img{
+        display: none;
+    }
+
+    .space{
+        display:none;
+    }
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

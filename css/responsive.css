@@ -1,0 +1,58 @@
+
+
+/*    Media query : max-width: 995px    */
+
+
+@media all and (max-width: 995px) {
+
+    body,html{
+        background-color: red;
+    }
+
+    .container-header img {
+    width: 138px;
+    }
+
+    #menu-header .menu-header {
+        opacity: 0;
+    }
+
+    #menu-header .menu-header-menu-container a{
+        display: inline-block;
+        transform: translateY(-200px);
+        height: 0;
+    }
+
+    #modal-content .menu-header-menu-container {
+        opacity: 1;
+        height: auto;
+    }
+    
+    #modal-content .menu-header-menu-container a{
+        display: inline-block;
+        transform: translateY(0);
+        height: 0;
+    }
+    
+    #modal-burger {
+        opacity: 1;
+        top: 0;
+    }
+
+    #menu-header .menu-header-menu-container,
+    #menu-header #modal-burger {
+        margin-right: 0;
+    }
+
+    .cmd-img{
+        display: none;
+    }
+
+    .space{
+        display:none;
+    }
+
+
+
+
+}

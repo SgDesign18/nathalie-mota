@@ -21,13 +21,16 @@
                         </div>
                     </div>
                 <?php endwhile; ?>
+
             <?php else : ?>
                 <div class="col">
                     <p>Aucun article trouvé.</p>
                 </div>
             <?php endif; ?>
         </div>
+        <div class="pagination-blog"><?php the_posts_pagination(); ?></div>
     </section>
 </div>
+
 
 <?php get_footer(); ?>
