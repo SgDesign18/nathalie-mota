@@ -6,7 +6,7 @@ jQuery(document).ready(function($) {
             url: ajax_object.ajax_url, // Utiliser la variable définie dans la page PHP pour l'URL AJAX
             type: 'POST',
             data: {
-                action: 'get_next_photo_thumbnail',
+                action: 'get_adjacent_photo_thumbnail',
                 photo_id: currentPhotoID,
                 direction: 'previous'
             },
@@ -23,7 +23,7 @@ jQuery(document).ready(function($) {
             url: ajax_object.ajax_url, // Utiliser la variable définie dans la page PHP pour l'URL AJAX
             type: 'POST',
             data: {
-                action: 'get_next_photo_thumbnail',
+                action: 'get_adjacent_photo_thumbnail',
                 photo_id: currentPhotoID,
                 direction: 'next'
             },

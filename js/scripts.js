@@ -1,22 +1,43 @@
 
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
-    const contactBtn = document.querySelectorAll(".open-modal");
-    const popupOverlay = document.querySelector(".popup-overlay");
+  const contactBtn = document.querySelectorAll(".open-modal");
+  const popupOverlay = document.querySelector(".popup-overlay");
+  const referenceInput = document.querySelector("#reference-photo"); // Sélectionnez l'élément d'entrée de la référence de la photo
 
-    // Ouverture de la pop contact au clic sur un lien contact
-    contactBtn.forEach((contact) => {
-        contact.addEventListener("click", () => {
-            popupOverlay.classList.remove("hidden");
-        });
-    });
+  // Ouverture de la pop contact au clic sur un lien contact
+  contactBtn.forEach((contact) => {
+      contact.addEventListener("click", () => {
+          popupOverlay.classList.remove("hidden");
+          const reference = contact.dataset.reference; // Obtenez la référence de la photo à partir de l'attribut de données personnalisé
+          referenceInput.value = reference; // Mettez à jour la valeur de l'entrée de référence avec la référence de la photo
+      });
+  });
 
-    // Refermeture de la pop contact au clic
-    popupOverlay.addEventListener("click", (e) => {
-        if (e.target.className == "popup-overlay") {
-            popupOverlay.classList.add("hidden");
-        }
-    });
+  // Refermeture de la pop contact au clic sur la zone de fond ou sur le bouton de fermeture
+  popupOverlay.addEventListener("click", (e) => {
+      if (e.target.classList.contains("popup-overlay") || e.target.classList.contains("close-modal")) {
+          popupOverlay.classList.add("hidden");
+      }
+  });
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const referenceField = document.getElementById('reference-photo');
+  if (referenceField) {
+      // Si vous êtes sur la page single, le champ de référence est prérempli et caché
+      referenceField.classList.add('hidden');
+  }
+});
+
+
+
+
+
+
 
   // Gestion du menu responsive
   (function ($) {
@@ -40,5 +61,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-  
-  
+  // gestion des filtres 
+
+  jQuery(document).ready(function($) {
+    // Fonction pour charger les photos filtrées lorsqu'un filtre est modifié
+    $('#category-filter, #format-filter, #date-filter').change(function() {
+        loadFilteredPhotos();
+    });
+
+    function loadFilteredPhotos() {
+        const category = $('#category-filter').val();
+        const format = $('#format-filter').val();
+        const date = $('#date-filter').val();
+
+        // Effectuer la requête AJAX pour charger les photos filtrées
+        $.ajax({
+            url: ajaxurl,
+            type: 'POST',
+            data: {
+                action: 'load_photos_by_filters',
+                category: category,
+                format: format,
+                date: date
+            },
+            success: function(response) {
+                // Mettre à jour la grille de photos avec la réponse de la requête
+                $('.photo-grid').html(response);
+            }
+   
+        });
+    }
+});
+
+
+

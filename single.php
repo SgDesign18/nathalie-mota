@@ -67,30 +67,63 @@ get_header();
                             </div>
                         </div>
 
-
                         <div class="row g-5 single-cmd">
                             <div class="col-lg-3 typo2">
                                 <p>Cette photo vous intéresse ?</p>
                             </div>
                             <div class="col-lg-3">
                                 <div class="button-single">
-                                    <button id="btn-cmd">Contact</button>
+                                <button id="btn-cmd" class="open-modal" data-reference="<?php echo get_field('reference_de_la_photo'); ?>">Contact</button>
+
+           
                                 </div>
                             </div>
                             <div class="col-lg-6 col-img-min">
                                 <div class="cmd-img">
                                     <div class="img-min" data-photo-id="<?php echo get_the_ID(); ?>">
-                                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/min.jpg" alt="miniature bouquet de fleur">
+
                                         <?php
-                                        // Récupérer l'ID de la prochaine photo
-                                        //  $next_photo = get_adjacent_post(false, '', false, 'photo');
-                                        //  if ($next_photo) {
-                                        //     $next_photo_id = $next_photo->ID;
-                                        //     echo get_the_post_thumbnail($next_photo_id, 'thumbnail');
-                                        //   } else {
-                                        //      echo 'img';
-                                        //  }
+                                        // Récupérer la catégorie de la photo actuelle
+                                        $categories = get_the_terms(get_the_ID(), 'categorie');
+                                        if ($categories && !is_wp_error($categories)) {
+                                            $category_slugs = array();
+                                            foreach ($categories as $category) {
+                                                $category_slugs[] = $category->slug;
+                                            }
+
+                                            // Récupérer les articles de type "photo" avec WP_Query et filtrer par catégorie
+                                            $args = array(
+                                                'post_type' => 'photo', // Slug de CPT UI
+                                                'posts_per_page' => 1, // Limiter à 1 photo
+                                                'tax_query' => array(
+                                                    array(
+                                                        'taxonomy' => 'categorie',
+                                                        'field' => 'slug',
+                                                        'terms' => $category_slugs,
+                                                    ),
+                                                ),
+                                                'post__not_in' => array(get_the_ID()), // Exclure l'article principal
+                                            );
+
+                                            $query = new WP_Query($args);
+
+                                            if ($query->have_posts()) :
+                                                while ($query->have_posts()) : $query->the_post();
                                         ?>
+
+                                                    <a href="<?php the_permalink(); ?>" class="photo-link" title="Voir les détails de la photo">
+                                                        <?php the_post_thumbnail('min', array('class' => 'photo-min')); ?>
+                                                    </a>
+
+                                        <?php
+                                                endwhile;
+                                                wp_reset_postdata();
+                                            else :
+                                                echo 'Aucune photo trouvée.';
+                                            endif;
+                                        }
+                                        ?>
+
                                     </div>
                                     <div class="fleches">
                                         <span id="arrow-left" class="arrow" data-photo-id="<?php echo get_the_ID(); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/precedent.png" alt="fleche gauche"></span>
@@ -101,6 +134,7 @@ get_header();
                             </div>
 
                         </div>
+
                         <span class="hr"></span>
                         <h3 class="single-other">VOUS AIMEREZ AUSSI ...</h3>
 
@@ -125,6 +159,7 @@ get_header();
                                             'terms' => $category_slugs,
                                         ),
                                     ),
+                                    'post__not_in' => array(get_the_ID()), // Exclure l'article principal
                                 );
 
                                 $query = new WP_Query($args);
@@ -135,7 +170,11 @@ get_header();
                                         <div class="col-lg-6">
                                             <div class="other-img">
                                                 <div class="photo-other">
-                                                    <a href="<?php the_permalink(); ?>" class="photo-link" title="Voir les détails de la photo"><?php the_post_thumbnail('galerie', array('class' => 'photo-thumbnail')); ?></a>
+                                                    <?php the_post_thumbnail('galerie', array('class' => 'photo-thumbnail')); ?>
+                                                    <div class="overlay">
+                                                        <span class="photo-details"><a href="<?php the_permalink(); ?>" class="photo-link" title="Voir les détails de la photo"><img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/eye.png'; ?>"></a></span>
+                                                        <span class="photo-lightbox"><a href="#" class="photo-full" title="Afficher la photo"><img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/icon-full.png'; ?>"></a></span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -148,6 +187,7 @@ get_header();
                             }
                             ?>
                         </div>
+
 
 
                     </div><!--fin container-->

@@ -396,7 +396,7 @@ footer ul{
     color: white !important;
 }
 .photo-category a{
-
+    text-decoration: none;
     color: white !important;
 }
 .photo-details{
@@ -437,6 +437,40 @@ footer ul{
 .photo-item:hover{
     background-color: #000;
 }
+
+/*--------------------------------------Filtres front-page ---------------------------------------------*/
+
+.filtres{
+    width: 80%;
+    margin: 50px auto;
+
+}
+
+
+
+.filtres select{
+
+    text-transform: uppercase;
+    width: 260px;
+    height: 42px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+  border: 1.3px solid #B8BBC2;
+  border-radius: 8px;
+  padding-top: 11px;
+  padding-right: 18px;
+  padding-bottom: 11px;
+  padding-left: 18px;
+  background-color: transparent;
+}
+
+select option:hover {
+    background-color: #E00000  !important;
+    color:white;
+  }
+
+
 
 /*--------------------------------------Page Single Photo ---------------------------------------------*/
 
@@ -522,6 +556,8 @@ footer ul{
     background-color: rgb(230, 228, 225);   
 }
 
+
+
 .fleches{
     position: absolute;
     right:25px;
@@ -555,85 +591,3 @@ footer ul{
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /*  **********************************  */
-/*    Media query : max-width: 992px    */
-/*  **********************************  */
-@media all and (max-width: 992px) {
-    .container-header img {
-    width: 138px;
-    }
-
-    #menu-header .menu-header {
-        opacity: 0;
-    }
-
-    #menu-header .menu-header-menu-container a{
-        display: inline-block;
-        transform: translateY(-200px);
-        height: 0;
-    }
-
-    #modal-content .menu-header-menu-container {
-        opacity: 1;
-        height: auto;
-    }
-    
-    #modal-content .menu-header-menu-container a{
-        display: inline-block;
-        transform: translateY(0);
-        height: 0;
-    }
-    
-    #modal-burger {
-        opacity: 1;
-        top: 0;
-    }
-
-    #menu-header .menu-header-menu-container,
-    #menu-header #modal-burger {
-        margin-right: 0;
-    }
-
-    .cmd-img{
-        display: none;
-    }
-
-    .space{
-        display:none;
-    }
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
