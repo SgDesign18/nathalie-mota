@@ -7,7 +7,7 @@
 
 <div id="content">
     <!-- Chargement de la bannière -->
-    <?php get_template_part('template-parts/banner'); ?>
+    <?php get_template_part('templates_part/banner'); ?>
 
     <?php
     // Boucle WordPress pour récupérer le contenu de la page 

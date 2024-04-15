@@ -1,18 +1,20 @@
 
 
-
-
 document.addEventListener("DOMContentLoaded", function () {
   const contactBtn = document.querySelectorAll(".open-modal");
   const popupOverlay = document.querySelector(".popup-overlay");
-  const referenceInput = document.querySelector("#reference-photo"); // Sélectionnez l'élément d'entrée de la référence de la photo
+  const referenceInput = document.querySelector("#ref"); 
 
   // Ouverture de la pop contact au clic sur un lien contact
   contactBtn.forEach((contact) => {
       contact.addEventListener("click", () => {
           popupOverlay.classList.remove("hidden");
-          const reference = contact.dataset.reference; // Obtenez la référence de la photo à partir de l'attribut de données personnalisé
-          referenceInput.value = reference; // Mettez à jour la valeur de l'entrée de référence avec la référence de la photo
+          const reference = contact.dataset.reference;
+          if (typeof reference !== "undefined") { // Vérifiez si la référence est définie
+              referenceInput.value = reference; 
+          } else {
+              referenceInput.value = ""; // Si la référence n'est pas définie, laissez le champ vide
+          }
       });
   });
 
@@ -25,13 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-document.addEventListener("DOMContentLoaded", function () {
-  const referenceField = document.getElementById('reference-photo');
-  if (referenceField) {
-      // Si vous êtes sur la page single, le champ de référence est prérempli et caché
-      referenceField.classList.add('hidden');
-  }
-});
+
 
 
 

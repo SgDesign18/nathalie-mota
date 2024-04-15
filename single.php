@@ -74,8 +74,6 @@ get_header();
                             <div class="col-lg-3">
                                 <div class="button-single">
                                 <button id="btn-cmd" class="open-modal" data-reference="<?php echo get_field('reference_de_la_photo'); ?>">Contact</button>
-
-           
                                 </div>
                             </div>
                             <div class="col-lg-6 col-img-min">
@@ -173,7 +171,7 @@ get_header();
                                                     <?php the_post_thumbnail('galerie', array('class' => 'photo-thumbnail')); ?>
                                                     <div class="overlay">
                                                         <span class="photo-details"><a href="<?php the_permalink(); ?>" class="photo-link" title="Voir les détails de la photo"><img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/eye.png'; ?>"></a></span>
-                                                        <span class="photo-lightbox"><a href="#" class="photo-full" title="Afficher la photo"><img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/icon-full.png'; ?>"></a></span>
+                                                        <span class="single-lightbox"><a href="#" class="photo-full" title="Afficher la photo"><img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/icon-full.png'; ?>"></a></span>
                                                     </div>
                                                 </div>
                                             </div>

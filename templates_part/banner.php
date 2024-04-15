@@ -10,6 +10,9 @@
 <!-- Wrap Slider Area -->
 <div class="hero-area">
     <div class="hero-thumbnail">
+        <!-- Image fixe au centre -->
+       
+
         <!-- Initialisation de post à afficher -->
         <?php   
             $custom_args = array( 
@@ -29,7 +32,7 @@
             <?php endif; ?>                  
                     
         <?php endwhile; ?>            
-        <h1 class="title-hero"><?php bloginfo('description'); ?></h1>
+        <h1 class="title-hero"> <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/titre_header.png'; ?>" class="center-image" alt="Titre Header"></h1>
     </div>  
 </div>
 <?php

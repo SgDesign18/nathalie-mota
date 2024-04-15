@@ -4,6 +4,7 @@ add_theme_support( 'post-thumbnails' ); // Ajouter la prise en charge des images
 
 add_image_size('galerie', 564, 495, true);
 add_image_size('min', 81, 71, true);
+add_image_size( 'hero', 1450, 960, true );
 
 // Ajouter la prise en charge des menus
 function custom_theme_setup() {
@@ -25,6 +26,8 @@ function add_custom_menu_item($items, $args) {
     return $items;
 }
 add_filter('wp_nav_menu_items', 'add_custom_menu_item', 10, 2);
+
+
 
 
 

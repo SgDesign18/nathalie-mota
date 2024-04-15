@@ -16,9 +16,16 @@
 		</div>
 		<div class="popup-informations">	
         <?php
-				
-				echo do_shortcode('[contact-form-7 id="b2f26a9" title="Formulaire de contact"]');
+				$refPhoto = "";
+				if (get_field('reference_de_la_photo')) {
+					$refPhoto = get_field('reference_de_la_photo');
+				}; 
+				// Inclure le formulaire de contact en ajoutant la valeur pré-remplie pour la référence de la photo
+				echo do_shortcode('[contact-form-7 id="b2f26a9" title="Formulaire de contact" ref="'.$refPhoto.'"]');
 			?>
 		</div>	
 	</div>
 </div>
+
+
+
