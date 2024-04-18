@@ -43,16 +43,13 @@ function theme_enqueue_scripts() {
     wp_enqueue_script('jquery');
     wp_enqueue_script('theme-scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0', true);
     wp_enqueue_script('scripts-miniature', get_template_directory_uri() . '/js/min-photo.js', array('jquery'), '1.0', true);
+    wp_enqueue_script('scripts-lightbox', get_template_directory_uri() . '/js/lightbox.js', array('jquery'), '1.0', true);
     
     // Passer l'URL AJAX à votre script JavaScript
     wp_localize_script('scripts-miniature', 'ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
 
 }
 add_action('wp_enqueue_scripts', 'theme_enqueue_scripts');
-
-
-
-
 
 
 // Fonction pour charger plus de photos en utilisant AJAX
@@ -71,7 +68,7 @@ function load_more_photos() {
              <div class="photo-item">
                     <?php the_post_thumbnail('galerie', array('class' => 'photo-thumbnail')); ?>
                     <div class="overlay">
-                        <!-- Ajoutez ici les détails et les liens de chaque photo -->
+                       
                         <span class="photo-reference">Ref: <?php echo get_field('reference_de_la_photo'); ?></span>
                         <span class="photo-category"><?php echo get_the_term_list(get_the_ID(), 'categorie', '', ', '); ?></span>
                         <span class="photo-details"><a href="<?php the_permalink(); ?>" class="photo-link" title="Voir les détails de la photo"><img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/eye.png'; ?>" ></a></span>

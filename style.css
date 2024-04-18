@@ -7,16 +7,16 @@ Version: 1.0
 
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
-body{
+body {
     font-family: "Space Mono", monospace;
     font-weight: 400;
     font-style: normal;
-  }
+}
 
 header {
     width: 100%;
@@ -33,14 +33,14 @@ footer {
     border-top: 2px solid black;
 }
 
-footer ul{
+footer ul {
     padding: 20px;
     text-align: center;
 }
 
 .menu-footer li a {
-    text-decoration: none; 
-    margin-right: 30px; 
+    text-decoration: none;
+    margin-right: 30px;
     text-transform: uppercase;
     color: black;
 }
@@ -58,22 +58,22 @@ footer ul{
 
 }
 
-.header{
+.header {
     display: flex;
     width: 80%;
     margin: 0 auto;
     align-items: center;
     justify-content: space-between;
-   
+
 }
 
 .logo {
-    flex: 0 0 auto; 
+    flex: 0 0 auto;
 }
 
 .nav {
-    flex: 1; 
-    text-align: right; 
+    flex: 1;
+    text-align: right;
 }
 
 
@@ -84,22 +84,23 @@ footer ul{
 }
 
 
-.menu-header li , .menu-footer li{
+.menu-header li,
+.menu-footer li {
     display: inline-block;
 }
 
-.menu-header a{
+.menu-header a {
     text-decoration: none;
     text-transform: uppercase;
     margin-right: 20px;
     color: black;
 }
 
-.menu-header a:hover{
+.menu-header a:hover {
     font-weight: 700;
 }
 
-.hero{
+.hero {
     margin-top: -50px;
     height: 1000px;
     background-color: rgb(129, 119, 119);
@@ -107,34 +108,34 @@ footer ul{
 
 .card-img-top {
     object-fit: cover !important;
-    width: 100%; 
+    width: 100%;
     height: 300px;
 }
 
-#page-blog{
-    width: 80% !important ;
-    margin: 20px auto !important ;
+#page-blog {
+    width: 80% !important;
+    margin: 20px auto !important;
 }
 
-.content-single-post{
-    width: 80% !important ;
-    margin: 0 auto !important ;
+.content-single-post {
+    width: 80% !important;
+    margin: 0 auto !important;
 }
 
-.single-banner{
+.single-banner {
     object-fit: contain !important;
-    width: 100%; 
+    width: 100%;
     max-width: 1440px;
     height: 500px;
     overflow: hidden;
     margin: auto;
-    background-size : cover;
+    background-size: cover;
     margin-bottom: 50px;
 }
 
-.single-banner img{
+.single-banner img {
     width: 100%;
-    background-size : cover;
+    background-size: cover;
 }
 
 /*------------------------------------Menu----------------------------------------------*/
@@ -147,7 +148,7 @@ footer ul{
 
 #menu-header .menu-header-menu-container,
 #menu-header #modal-burger {
-    margin-right: 40px;    
+    margin-right: 40px;
 }
 
 #menu-header .menu-header-menu-container {
@@ -176,14 +177,14 @@ footer ul{
     margin: 0;
     padding: 0;
     right: 3em;
-    cursor: pointer;  
-  }
+    cursor: pointer;
+}
 
-  #menu-header button{
+#menu-header button {
     border: none !important;
 
-  }
-  
+}
+
 .btn-modal .line {
     opacity: 1;
     /* opacity: 0; */
@@ -193,21 +194,21 @@ footer ul{
     width: 100%;
     margin: 0;
     transition: all .3s ease-in-out;
-  }
-  
-  /* Création du bouton pour fermer */
+}
+
+/* Création du bouton pour fermer */
 #modal-burger:hover .l2,
 .btn-modal.close .l2 {
     opacity: 0;
-  }
+}
 
-.btn-modal.close .l1{
-    transform: rotate(45deg) ;
-  }
+.btn-modal.close .l1 {
+    transform: rotate(45deg);
+}
 
 .btn-modal.close .l3 {
-    transform: rotate(-45deg) ;
-  }
+    transform: rotate(-45deg);
+}
 
 .modal-content {
     position: absolute;
@@ -216,7 +217,7 @@ footer ul{
     top: 70px;
     width: 100vw;
     height: 0;
-    background: #E00000; 
+    background: #E00000;
     visibility: hidden;
     transition: all .3s ease-in-out;
     text-align: center;
@@ -229,20 +230,20 @@ footer ul{
 }
 
 #modal-content .menu-header-menu-container ul,
-#modal-content .menu-header-menu-container li {  
-    display: flex;  
+#modal-content .menu-header-menu-container li {
+    display: flex;
     justify-content: center;
-    text-align: center;    
+    text-align: center;
     /* align-items: center */
 }
 
-#modal-content .menu-header-menu-container ul {    
+#modal-content .menu-header-menu-container ul {
     flex-direction: column;
-    justify-content: space-around;    
+    justify-content: space-around;
     padding: 35px 20px 25px;
 }
 
-#modal-content .menu-header-menu-container li {   
+#modal-content .menu-header-menu-container li {
     height: 80px;
 }
 
@@ -254,53 +255,54 @@ footer ul{
 .animate-modal {
     opacity: 1;
     /* width: 100vw; */
-    height: auto;  
+    height: auto;
     animation: move-down 2s 300ms both;
 }
 
 /* Pour faire apparaitre la moadle en descendant et avec agmentatation de l'opacité */
 @keyframes move-down {
     0% {
-      transform: translateY(-400px);
-      opacity: 0;
-    }  
-    100% {
-      transform: translateY(0);
-      visibility: visible;
+        transform: translateY(-400px);
+        opacity: 0;
     }
-  }
 
-  .pagination-blog {
+    100% {
+        transform: translateY(0);
+        visibility: visible;
+    }
+}
+
+.pagination-blog {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 100px;
-  }
-  
-  .site__navigation {
+}
+
+.site__navigation {
     display: flex;
     justify-content: space-between;
     width: 100%;
     margin-top: 20px;
-  }
-  
-  .site__navigation__prev,
-  .site__navigation__next {
+}
+
+.site__navigation__prev,
+.site__navigation__next {
     width: 45%;
     text-align: center;
-  }
-  
-  .site__navigation__prev img,
-  .site__navigation__next img {
+}
+
+.site__navigation__prev img,
+.site__navigation__next img {
     max-width: 100%;
     height: auto;
-  }
-  
-  .site__navigation__prev h4,
-  .site__navigation__next h4 {
+}
+
+.site__navigation__prev h4,
+.site__navigation__next h4 {
     margin-top: 10px;
-  }
-  
+}
+
 
 /* --------------------------------------------------- Hero banner ------------------------------------- */
 .hero-area .hero-thumbnail {
@@ -308,11 +310,11 @@ footer ul{
     margin: auto;
     align-items: center;
     width: 100%;
-    max-height: 966px;    
+    max-height: 966px;
     overflow: hidden;
 }
 
-.hero-area img {    
+.hero-area img {
     margin: auto;
     object-fit: cover;
     object-position: 50% 50%;
@@ -321,16 +323,16 @@ footer ul{
     max-height: 966px;
 }
 
-.hero-area .title-hero {    
+.hero-area .title-hero {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 999; 
+    z-index: 999;
 }
 
 
-
+/* --------------------------------------------------- Grille de photos ------------------------------------- */
 
 
 .photo-grid {
@@ -343,26 +345,28 @@ footer ul{
 }
 
 .photo-item {
-    width: 580px; /* Utilisez une largeur de 100% pour occuper tout l'espace disponible dans la grille */
-    height: 500px; /* Utilisez une hauteur de 100% pour assurer que chaque élément de grille a la même hauteur */
+    width: 580px;
+    height: 500px;
     position: relative;
 }
 
 .photo-thumbnail {
-    width: 100%; /* Utilisez une largeur de 100% pour que l'image remplisse entièrement son conteneur */
-    height: 100%; /* Utilisez une hauteur de 100% pour que l'image remplisse entièrement son conteneur */
-    object-fit: cover; /* Utilisez "cover" pour que l'image conserve ses proportions tout en remplissant le conteneur */
-    margin: 0; /* Supprimez la marge pour éviter les espaces supplémentaires autour de l'image */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin: 0;
 }
 
-.button-plus{
+/* --------------------------------------------------- Bouton afficher plus ------------------------------------- */
+
+.button-plus {
     display: flex;
     justify-content: center;
     height: 250px;
     align-items: center;
 }
 
-#load-more-btn{
+#load-more-btn {
     text-align: center;
     width: 272px;
     height: 50px;
@@ -370,84 +374,85 @@ footer ul{
     border: 1px solid black;
 }
 
-#load-more-btn:hover{
+#load-more-btn:hover {
     cursor: pointer;
     background-color: #E00000;
 }
 
-.photo-reference{
+/* --------------------------------------------------- Hover sur image ------------------------------------- */
+
+.photo-reference {
     position: absolute;
-    left:10px;
+    left: 10px;
     bottom: 10px;
     color: white;
 }
 
-.photo-category{
+.photo-category {
     position: absolute;
-    right:10px;
+    right: 10px;
     bottom: 10px;
     color: white !important;
 }
-.photo-category a{
+
+.photo-category a {
     text-decoration: none;
     color: white !important;
 }
-.photo-details{
-    position:absolute;
-	top:0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+
+.photo-details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-
-.photo-lightbox{
+.photo-lightbox {
     position: absolute;
-    right:10px;
+    right: 10px;
     top: 10px;
 }
 
-.single-lightbox{
+.single-lightbox {
     position: absolute;
-    right:30px;
+    right: 30px;
     top: 10px;
 }
 
-.overlay{
+.overlay {
     opacity: 0;
 }
 
-.photo-item:hover .overlay{
+.photo-item:hover .overlay {
     opacity: 1;
     color: white !important;
 }
 
-.photo-item > img{
+.photo-item>img {
     opacity: 1;
 }
 
-.photo-item:hover > img{
+.photo-item:hover>img {
     opacity: 0.5;
 }
 
-.photo-item:hover{
+.photo-item:hover {
     background-color: #000;
 }
 
-/*--------------------------------------Filtres front-page ---------------------------------------------*/
+/*-----------------------------------------------------Filtres front-page ---------------------------------------------*/
 
-.filtres{
+.filtres {
     width: 80%;
     margin: 50px auto;
-
 }
 
 
-
-.filtres select{
+.filtres select {
 
     text-transform: uppercase;
     width: 260px;
@@ -455,19 +460,19 @@ footer ul{
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
     font-weight: 400;
-  border: 1.3px solid #B8BBC2;
-  border-radius: 8px;
-  padding-top: 11px;
-  padding-right: 18px;
-  padding-bottom: 11px;
-  padding-left: 18px;
-  background-color: transparent;
+    border: 1.3px solid #B8BBC2;
+    border-radius: 8px;
+    padding-top: 11px;
+    padding-right: 18px;
+    padding-bottom: 11px;
+    padding-left: 18px;
+    background-color: transparent;
 }
 
 select option:hover {
-    background-color: #E00000  !important;
-    color:white;
-  }
+    background-color: #E00000 !important;
+    color: white;
+}
 
 
 
@@ -479,9 +484,9 @@ select option:hover {
     text-transform: uppercase !important;
     line-height: 58px;
     word-spacing: 0px;
-  }
+}
 
-.hr{
+.hr {
     border: 1px solid black;
     background-color: #000;
     width: 100%;
@@ -489,12 +494,12 @@ select option:hover {
     display: block;
 }
 
-.space{
+.space {
     display: block;
     height: 300px;
 }
 
-.single-img{
+.single-img {
     position: relative;
     display: flex;
     justify-content: center;
@@ -503,15 +508,16 @@ select option:hover {
     margin-left: 10px;
 }
 
-.section-title h2{
+.section-title h2 {
     width: 80%;
 }
-.infos p{
+
+.infos p {
     text-transform: uppercase;
     font-size: 18px;
 }
 
-.single-cmd{
+.single-cmd {
     position: relative;
     display: flex;
     height: 120px;
@@ -521,7 +527,7 @@ select option:hover {
 }
 
 
-#btn-cmd{
+#btn-cmd {
     text-align: center;
     width: 100%;
     height: 50px;
@@ -529,12 +535,12 @@ select option:hover {
     border: 1px solid black;
 }
 
-#btn-cmd:hover{
+#btn-cmd:hover {
     cursor: pointer;
     background-color: #E00000;
 }
 
-.typo2{
+.typo2 {
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
     font-weight: 500;
@@ -542,51 +548,156 @@ select option:hover {
     margin-top: 10px;
 }
 
-.single-other{
-    margin:50px 0 50px 0 ;
+.single-other {
+    margin: 50px 0 50px 0;
 }
 
-.img-min{
+.img-min {
     position: absolute;
-    right:15px;
-    top:-50px;
+    right: 15px;
+    top: -50px;
     height: 71px;
     width: 81px;
-    background-color: rgb(230, 228, 225);   
+    background-color: rgb(230, 228, 225);
 }
 
 
 
-.fleches{
+.fleches {
     position: absolute;
-    right:25px;
+    right: 25px;
     bottom: -50px;
 }
 
 .arrow {
     display: inline-block;
     text-align: center;
-    line-height: 20px; /* Centrez verticalement le texte */
-    cursor: pointer; /* Curseur de la souris sur les flèches */
+    line-height: 20px;
+    cursor: pointer;
 }
 
 
 
-.photo-other:hover .overlay{
+.photo-other:hover .overlay {
     opacity: 1;
     color: white !important;
 }
 
-.photo-other > img{
+.photo-other>img {
     opacity: 1;
 }
 
-.photo-other:hover > img{
+.photo-other:hover>img {
     opacity: 0.5;
 }
 
-.photo-other:hover{
+.photo-other:hover {
     background-color: #000;
 }
 
 
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox img {
+    max-width: 60%;
+    max-height: 70%;
+    object-fit: contain;
+
+}
+
+.photo-info {
+    position: absolute;
+    bottom: -30px; /* Ajuster la position verticale */
+    padding: 5px;
+    color: white;
+    text-align: center;
+    width: 60%;
+    box-sizing: border-box; /* Garder la largeur à 100% incluant le padding */
+}
+
+.reference{
+    position: absolute;
+    bottom: 0; /* Ajuster la position verticale */
+    left: 0;
+}
+
+.category{
+    position: absolute;
+    bottom: 0; /* Ajuster la position verticale */
+    right: 0;
+}
+
+
+
+/* Masquer les flèches par défaut */
+.close,
+.prev-btn,
+.next-btn {
+    display: none;
+}
+
+/* Afficher les flèches lorsque la lightbox est ouverte */
+.lightbox.active .close,
+.lightbox.active .prev-btn,
+.lightbox.active .next-btn {
+    display: block !important;
+}
+
+/* Ajouter du style aux flèches */
+.prev-btn,
+.next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 20px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+
+    color: rgba(255, 255, 255, 1);
+    cursor: pointer;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+.close{
+    position: absolute;
+    top:0;
+    right: 0;
+    font-size: 20px;
+    color: white;
+   
+}

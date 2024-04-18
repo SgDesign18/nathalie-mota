@@ -32,7 +32,7 @@
             <?php endif; ?>                  
                     
         <?php endwhile; ?>            
-        <h1 class="title-hero"> <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/titre_header.png'; ?>" class="center-image" alt="Titre Header"></h1>
+        <h1 class="title-hero"> <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/titre_header.png'; ?>"  alt="Photographe event"></h1>
     </div>  
 </div>
 <?php
