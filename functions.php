@@ -65,22 +65,35 @@ function load_more_photos() {
     if ($query->have_posts()) :
         while ($query->have_posts()) : $query->the_post();
             ?>
-             <div class="photo-item">
-                    <?php the_post_thumbnail('galerie', array('class' => 'photo-thumbnail')); ?>
-                    <div class="overlay">
-                       
-                        <span class="photo-reference">Ref: <?php echo get_field('reference_de_la_photo'); ?></span>
-                        <span class="photo-category"><?php echo get_the_term_list(get_the_ID(), 'categorie', '', ', '); ?></span>
-                        <span class="photo-details"><a href="<?php the_permalink(); ?>" class="photo-link" title="Voir les détails de la photo"><img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/eye.png'; ?>" ></a></span>
-                        <span class="photo-lightbox"><a href="#" class="photo-full" title="Afficher la photo"><img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/icon-full.png'; ?>" ></a></span>
-                    </div>
+            <div class="photo-item">
+                <?php 
+                    // Récupérer l'URL de la première image attachée à la publication
+                    $thumbnail_url = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full')[0];
+                ?>
+                <?php the_post_thumbnail('galerie', array('class' => 'photo-thumbnail')); ?>
+                <div class="overlay">
+                    <span class="photo-reference">Ref: <?php echo get_field('reference_de_la_photo'); ?></span>
+                    <span class="photo-category"><?php echo get_the_term_list(get_the_ID(), 'categorie', '', ', '); ?></span>
+                    <span class="photo-details"><a href="<?php the_permalink(); ?>" class="photo-link" title="Voir les détails de la photo"><img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/eye.png'; ?>"></a></span>
+                    <span class="photo-lightbox">
+                        <a href="<?php echo esc_url($thumbnail_url); ?>" class="photo-full-link" title="Afficher la photo">
+                            <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/icon-full.png'; ?>" alt="Afficher la photo">
+                        </a>
+                        <!-- Flèches de navigation -->
+                        <button class="close"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/croix.png" alt="fermer la photo"></button>
+                        <button class="prev-btn"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/prev.png" alt="image précédente"></button>
+                        <button class="next-btn"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/next.png" alt="image suivante"></button>
+                    </span>
                 </div>
+            </div>
             <?php
         endwhile;
     endif;
     
     wp_die();
 }
+
+
 add_action('wp_ajax_load_more_photos', 'load_more_photos');
 add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos');
 
