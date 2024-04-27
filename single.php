@@ -14,7 +14,6 @@ get_header();
     <section id="content">
         <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-
                 <div class="container-fluid py-5">
                     <div class="container">
                         <div class="row g-5">

@@ -1,6 +1,5 @@
-<?php
-get_header();
-?>
+<?php get_header(); ?>
+
 <div id="container">
 	<section id="single-post">
 		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
