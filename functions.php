@@ -17,8 +17,6 @@ function custom_theme_setup()
 }
 add_action('after_setup_theme', 'custom_theme_setup');
 
-
-
 // Ajouter le lien personnalisé au menu principal
 function add_custom_menu_item($items, $args)
 {
@@ -28,10 +26,6 @@ function add_custom_menu_item($items, $args)
     return $items;
 }
 add_filter('wp_nav_menu_items', 'add_custom_menu_item', 10, 2);
-
-
-
-
 
 function theme_enqueue_scripts()
 {
@@ -47,6 +41,7 @@ function theme_enqueue_scripts()
     wp_enqueue_script('theme-scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0', true);
     wp_enqueue_script('scripts-miniature', get_template_directory_uri() . '/js/min-photo.js', array('jquery'), '1.0', true);
     wp_enqueue_script('scripts-lightbox', get_template_directory_uri() . '/js/lightbox.js', array('jquery'), '1.0', true);
+    wp_enqueue_script('scripts-menu', get_template_directory_uri() . '/js/menu.js', array('jquery'), '1.0', true);
 
     // Passer l'URL AJAX à votre script JavaScript
     wp_localize_script('scripts-miniature', 'ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
@@ -54,13 +49,78 @@ function theme_enqueue_scripts()
 add_action('wp_enqueue_scripts', 'theme_enqueue_scripts');
 
 
+// Fonction pour charger tous les liens vers les images
+function load_all_photo_links()
+{
+    $args = array(
+        'post_type' => 'photo', // Slug de votre CPT UI
+        'posts_per_page' => -1, // Récupérer toutes les photos
+    );
+
+    $query = new WP_Query($args);
+
+    $photoFullLinksArray = array();
+
+    if ($query->have_posts()) {
+        while ($query->have_posts()) {
+            $query->the_post();
+            $thumbnail_url = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full')[0];
+            $photoFullLinksArray[] = array(
+                'href' => esc_url($thumbnail_url),
+                'reference' => get_field('reference_de_la_photo'),
+                'category' => get_the_terms(get_the_ID(), 'categorie'),
+            );
+        }
+        wp_reset_postdata();
+    }
+
+    // Renvoyer les liens sous forme de JSON
+    wp_send_json($photoFullLinksArray);
+}
+
+// Ajouter l'action AJAX pour charger tous les liens vers les images
+add_action('wp_ajax_load_all_photo_links', 'load_all_photo_links');
+add_action('wp_ajax_nopriv_load_all_photo_links', 'load_all_photo_links');
+
+
+
+function update_photo_links()
+{
+    $args = array(
+        'post_type' => 'photo', // Slug de votre CPT UI
+        'posts_per_page' => -1, // Récupérer toutes les photos
+    );
+
+    $query = new WP_Query($args);
+
+    if ($query->have_posts()) {
+        $photoFullLinksArray = array();
+        while ($query->have_posts()) {
+            $query->the_post();
+            $thumbnail_url = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full')[0];
+            $photoFullLinksArray[] = array(
+                'href' => esc_url($thumbnail_url),
+                'reference' => get_field('reference_de_la_photo'),
+                'category' => get_the_terms(get_the_ID(), 'categorie'),
+            );
+        }
+        wp_reset_postdata();
+?>
+        <script type="text/javascript">
+            var photoFullLinksArray = <?php echo json_encode($photoFullLinksArray); ?>;
+        </script>
+<?php
+    }
+}
+add_action('wp_head', 'update_photo_links');
 
 
 
 
 
 // Fonction pour charger plus de photos via AJAX
-function load_more_photos() {
+function load_more_photos()
+{
     $paged = $_POST['page']; // Récupérer le numéro de page suivant
     $args = array(
         'post_type' => 'photo',
@@ -79,12 +139,11 @@ function load_more_photos() {
     }
 
     wp_reset_postdata();
-
     die(); // Arrêter l'exécution après avoir envoyé les données
 }
+
 add_action('wp_ajax_load_more_photos', 'load_more_photos'); // Pour les utilisateurs connectés
 add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos'); // Pour les utilisateurs non connectés
-
 
 
 
@@ -109,7 +168,6 @@ function get_adjacent_photo_thumbnail($photo_id, $direction)
 
 add_action('wp_ajax_get_adjacent_photo_thumbnail', 'get_adjacent_photo_thumbnail');
 add_action('wp_ajax_nopriv_get_adjacent_photo_thumbnail', 'get_adjacent_photo_thumbnail');
-
 
 
 
@@ -153,9 +211,8 @@ function load_photos_by_filters()
     if ($query->have_posts()) :
         while ($query->have_posts()) : $query->the_post();
             // Afficher le contenu des photos
-             // Appel au modèle grille_photos.php pour afficher chaque photo
-             get_template_part('templates_part/grille_photos');
-
+            // Appel au modèle grille_photos.php pour afficher chaque photo
+            get_template_part('templates_part/grille_photos');
         endwhile;
         wp_reset_postdata();
     else :
@@ -173,6 +230,7 @@ add_action('wp_ajax_load_photos_by_filters', 'load_photos_by_filters');
 add_action('wp_ajax_nopriv_load_photos_by_filters', 'load_photos_by_filters');
 
 
+
 // Fonction pour récupérer l'ordre des articles du type "photo" dans CPT UI 
 // Récupère l'ordre des IDs dans la page frontale
 function get_photo_order()
@@ -180,7 +238,7 @@ function get_photo_order()
     $args = array(
         'post_type' => 'photo', // Slug de votre CPT UI
         'posts_per_page' => -1, // Récupérer tous les articles
-        'orderby' => 'menu_order', // Trier par l'ordre de menu
+        'orderby' => 'date', // Trier par l'ordre de menu
         'order' => 'ASC', // Par ordre croissant
     );
 
@@ -203,5 +261,4 @@ function get_photo_order()
 add_action('wp_ajax_get_photo_order', 'get_photo_order');
 add_action('wp_ajax_nopriv_get_photo_order', 'get_photo_order');
 
-
-
+?>

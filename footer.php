@@ -3,12 +3,12 @@
 
     <ul class="menu-footer">
         <?php
-        // Afficher le menu "menu-footer" dans le footer
+        
         wp_nav_menu(array(
-            'theme_location' => 'menu-footer', // Spécifie l'emplacement du menu
-            'container' => false, // Ne pas utiliser de conteneur supplémentaire
-            'items_wrap' => '%3$s<li>TOUS DROITS RÉSERVÉS</li>', // Ajouter un élément statique
-            // Autres paramètres facultatifs peuvent être ajoutés selon vos besoins
+            'theme_location' => 'menu-footer', 
+            'container' => false, 
+            'items_wrap' => '%3$s<li>TOUS DROITS RÉSERVÉS</li>', 
+           
         ));
         ?>
     </ul>
@@ -34,6 +34,3 @@
 </html>
 
 
-</body>
-
-</html>

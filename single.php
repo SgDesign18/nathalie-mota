@@ -9,6 +9,12 @@
 
 get_header();
 ?>
+<script>
+    const ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
+    const imageDirectory = '<?php echo get_template_directory_uri(); ?>/assets/images/';
+</script>
+
+<script src="<?php echo get_template_directory_uri(); ?>/js/lightbox.js"></script>
 
 <div id="wrap">
     <section id="content">
@@ -72,7 +78,7 @@ get_header();
                             </div>
                             <div class="col-lg-3">
                                 <div class="button-single">
-                                <button id="btn-cmd" class="open-modal" data-reference="<?php echo get_field('reference_de_la_photo'); ?>">Contact</button>
+                                    <button id="btn-cmd" class="open-modal" data-reference="<?php echo get_field('reference_de_la_photo'); ?>">Contact</button>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-img-min">
@@ -137,6 +143,8 @@ get_header();
 
                         <div class="row g-5">
                             <?php
+                            // Récupérer l'URL de la première image attachée à la publication
+                            $thumbnail_url = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full')[0];
                             // Récupérer la catégorie de la photo actuelle
                             $categories = get_the_terms(get_the_ID(), 'categorie');
                             if ($categories && !is_wp_error($categories)) {
@@ -170,7 +178,15 @@ get_header();
                                                     <?php the_post_thumbnail('galerie', array('class' => 'photo-thumbnail')); ?>
                                                     <div class="overlay">
                                                         <span class="photo-details"><a href="<?php the_permalink(); ?>" class="photo-link" title="Voir les détails de la photo"><img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/eye.png'; ?>"></a></span>
-                                                        <span class="single-lightbox"><a href="#" class="photo-full" title="Afficher la photo"><img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/icon-full.png'; ?>"></a></span>
+                                                        <span class="photo-lightbox single-lightbox">
+                                                            <a href="<?php echo esc_url($thumbnail_url); ?>" class="photo-full-link" title="Afficher la photo" data-reference="<?php echo esc_attr(get_field('reference_de_la_photo')); ?>" data-category="<?php echo esc_attr(implode(', ', $category_names)); ?>">
+                                                                <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/icon-full.png'; ?>" alt="Afficher la photo">
+                                                            </a>
+                                                            <!-- Flèches de navigation -->
+                                                            <button class="close"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/croix.png" alt="fermer la photo"></button>
+                                                            <button class="prev-btn"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/prev.png" alt="image précédente"></button>
+                                                            <button class="next-btn"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/next.png" alt="image suivante"></button>
+                                                        </span>
                                                     </div>
                                                 </div>
                                             </div>

@@ -2,11 +2,9 @@
 
 <script>
     const ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
-</script>
-
-<script>
     const imageDirectory = '<?php echo get_template_directory_uri(); ?>/assets/images/';
 </script>
+
 <script src="<?php echo get_template_directory_uri(); ?>/js/lightbox.js"></script>
 
 
@@ -22,7 +20,7 @@
         the_content();
     endwhile;
     ?>
-
+<div class="container-index">
     <div class="filtres">
         <div class="row g-5">
             <div class="col-lg-6">
@@ -56,7 +54,7 @@
                     <?php endforeach; ?>
                 </select>
             </div>
-            <div class="col-lg-6 text-right">
+            <div class="col-lg-6 ">
                 <select id="date-filter" class="select-filter">
                     <option value="">Trier par </option>
                     <option value="newest">Plus récente</option>
@@ -74,7 +72,7 @@
         $args = array(
             'post_type' => 'photo', // Slug de CPT UI
             'posts_per_page' => 8, // Récupérer seulement 8 photos initialement
-            'orderby' => 'date', // Trier par l'ordre de menu
+            'orderby' => 'date', // Trier par date
             'paged' => 1, // Utilisé pour la pagination AJAX
         );
         
@@ -99,7 +97,9 @@ endif;
     <div class="button-plus">
         <button id="load-more-btn">Charger plus</button>
     </div>
-</div>
+
+    </div><!--Fin container-->
+</div><!--Fin content-->
 
 
 <script>
@@ -122,6 +122,7 @@ endif;
                     data: data,
                     success: function(response) {
                         $('.photo-grid').append(response);
+                        updatePhotoFullLinksArray(); // Mettre à jour les liens vers les images complètes
                         if (response.trim() == '') {
                             canLoadMore = false;
                             $('#load-more-btn').hide();
@@ -134,3 +135,4 @@ endif;
 </script>
 
 <?php get_footer(); ?>
+

@@ -1,134 +1,292 @@
 
+/*  -------------------------------------------------  Media query : max-width: 1500px --------------   */
+
+
+@media screen and (min-width: 1500px) {
+
+    .photo-item {
+            width: 680px; 
+            height: 600px; 
+            position: relative;
+            
+        }
+    
+    
+    
+    
+    }
+
+
+
+
+
+
+
 /*  -------------------------------------------------  Media query : max-width: 1300px --------------   */
 
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1400px) {
 
-.photo-item {
-        width: 480px; 
-        height: 400px; 
-        position: relative;
-        
-    }
-
-
-
-
-}
-
-/*  -------------------------------------------------  Media query : max-width: 995px --------------   */
-
-
-@media all and (max-width: 995px) {
-
- 
-
-    .container-header img {
-    width: 138px;
-    }
-
-    #menu-header .menu-header {
-        opacity: 0;
-    }
-
-    #menu-header .menu-header-menu-container a{
-        display: inline-block;
-        transform: translateY(-200px);
-        height: 0;
-    }
-
-    #modal-content .menu-header-menu-container {
-        opacity: 1;
-        height: auto;
-    }
-    
-    #modal-content .menu-header-menu-container a{
-        display: inline-block;
-        transform: translateY(0);
-        height: 0;
-    }
-    
-    #modal-burger {
-        opacity: 1;
-        top: 0;
-    }
-
-    #menu-header .menu-header-menu-container,
-    #menu-header #modal-burger {
-        margin-right: 0;
-    }
-
-    .cmd-img{
-        display: none;
-    }
-
-    .space{
-        display: none !important;
-    }
-
-    .photo-other img{
-        margin-bottom: 20px;
-    }
-
-    .menu-footer li{
-        display: block;
-    }
-
-   
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
-
-/*  -------------------------------------------------  Media query : max-width: 768px --------------   */
-@media screen and (max-width: 768px) {
-   
-
-    .photo-grid {
-        width: 80%;
-        margin: 20px auto;
-        display: grid;
-        gap: 15px;
-        grid-template-columns:  1fr;
-        text-align: center;
-    }
-    
     .photo-item {
-        width: 580px; 
-        height: 500px; 
-        position: relative;
+            width: 480px; 
+            height: 400px; 
+            position: relative;
+            
+        }
+    
+    
+    
+    
+    }
+
+    /*  -------------------------------------------------  Media query : max-width: 1089px --------------   */
+
+
+@media screen and (max-width: 1089px) {
+
+    .photo-item {
+            width: 450px; 
+            height: 370px; 
+            position: relative;
+            
+        }
+    
     }
     
-    .photo-thumbnail {
-        width: 100%; 
-        height: 100%; 
-        object-fit: cover; 
-        margin: 0; 
+    /*  -------------------------------------------------  Media query : max-width: 995px --------------   */
+    
+    
+    @media all and (max-width: 995px) {
+    
+        .title-hero img{
+            width: 80%;
+        }
+    
+        .hero-area .hero-thumbnail {
+            position: relative;
+            margin: auto;
+            align-items: center;
+            width: 100%;
+            max-height: 500px;
+            overflow: hidden;
+        }
+    
+        .container-header img {
+        width: 138px;
+        }
+    
+       /**/
+       .menu li a{
+        text-decoration:none;
+        text-transform:uppercase;
+        font-size:18px;
+        color:white;
     }
+    
+      .menu-button-container {
+        display: flex;
+    
+      }
+      .menu {
+        position: absolute;
+        top: 0;
+        margin-top: 80px;
+        left: 0;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+      }
+      #menu-toggle ~ .menu-primary-container .menu li {
+        height: 0;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        transition: height 600ms cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      #menu-toggle:checked ~ .menu-primary-container .menu li {
+       
+        height: 2.5em;
+        padding: 0.5em;
+        transition: height 2000ms cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .menu > li {
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        padding: 1em 0;
+        width: 100%;
+        color: white;
+        background-color: #e00000;
+      }
+
+       /**/
+        
+        .btn-modal {
+            opacity: 1;
+       
+        }
+    
+        #menu-header .menu-header-menu-container,
+        #menu-header #modal-burger {
+            margin-right: 0;
+        }
+    
+        .cmd-img{
+            display: none;
+        }
+    
+        .space{
+            display: none !important;
+        }
+    
+        .photo-other img{
+            margin-bottom: 20px;
+        }
+    
+        .menu-footer li{
+            display: block;
+            text-align: center;
+        }
+
+        .menu-footer li:last-child{
+            margin-left: -20px;
+            
+        }
+    
+       
+      
+        .photo-item {
+            width: 380px; 
+            height: 300px; 
+            position: relative;
+        }
+        
+        .photo-thumbnail {
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            margin: 0; 
+        }
+    
+    
+        .filtres select {
+           display: flex;
+           flex-direction: column;
+      
+        }
+    
+        #date-filter{
+            float: left;
+        }
+    
+    
+        #category-filter, #format-filter, #date-filter{
+            width: 480px;
+            height: 42px;
+        }
+    
+    
+    
+    
+    
+    }
+    
+    /*  -------------------------------------------------  Media query : max-width: 870px --------------   */
+    @media screen and (max-width: 870px) {
+       
+
+        
+        .photo-item {
+            width: 340px; /* Largeur d'une photo */
+            height: 260px; /* Hauteur d'une photo */
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px; /* Espacement entre les lignes */
+        }
+        
+
+    
+        .hero-area .hero-thumbnail {
+            width: 100%;
+            max-height: 300px;
+            overflow: hidden;
+        }
+    
+    
+    
+    
+    
+      }
+
+
+         /*  -------------------------------------------------  Media query : max-width: 780px --------------   */
+    @media screen and (max-width: 780px) {
+       
+    
+   
+        
+        .photo-item {
+            width: 280px; /* Largeur d'une photo */
+            height: 200px; /* Hauteur d'une photo */
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px; /* Espacement entre les lignes */
+        }
+        
+
+    
+        .hero-area .hero-thumbnail {
+            width: 100%;
+            max-height: 300px;
+            overflow: hidden;
+        }
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-  }
+    }
+    
+    
+      /*  -------------------------------------------------  Media query : max-width: 568px --------------   */
+    @media screen and (max-width: 568px) {
+       
+    
+        .photo-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Centrer les éléments horizontalement */
+            gap: 20px; /* Espacement entre les photos */
+        }
+        
+        .photo-item {
+            width: 480px; /* Largeur d'une photo */
+            height: 400px; /* Hauteur d'une photo */
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px; /* Espacement entre les lignes */
+        }
+        
+        .photo-thumbnail {
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            margin: 0; 
+        }
+    
+        #category-filter, #format-filter, #date-filter{
+            width: 380px;
+            height: 42px;
+        }
+    
+        .hero-area .hero-thumbnail {
+            width: 100%;
+            max-height: 200px;
+            overflow: hidden;
+        }
+        
+    
+    
+    
+      }
