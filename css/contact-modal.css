@@ -17,7 +17,7 @@
     align-items:center;
     top:0;
     left:0;
-    z-index: 999;
+    z-index: 99999;
 }
 
 .popup-contact{
@@ -31,7 +31,6 @@
 }
 
 .popup-close{
-    /* position:absolute; */
     height:100px;
     width:100%;
     cursor:pointer;
@@ -75,17 +74,16 @@
 }
 
 .wpcf7-form p input {
-
     padding: 10px;
     border-radius: 8px;
-    width: 110%;
     border: 1px solid #B8BBC2;
+    width: 350px;
 }
 
 .wpcf7-submit{
-    width: 100%;
     cursor: pointer;
     background-color: #d8d8d8;
+    width: 350px;
 }
 
 .wpcf7-submit:hover{
@@ -96,12 +94,13 @@
 .wpcf7-form p textarea {
     padding: 10px;
     height: 210px;
+    width: 350px;
 }
 
 .wpcf7-form p .wpcf7-text,
 .wpcf7-form p .wpcf7-email,
 .wpcf7-form p textarea {
-    width: 100%;
+  
     border-radius: 8px;
 
 }
@@ -114,7 +113,7 @@
 }
 
 .wpcf7-response-output {
-    width: 160%;
+    width: 100%;
     transform: translate(-20%,0%);
     color: red;
 }
@@ -129,6 +128,7 @@
         justify-content:center;
         align-items:center;
         padding: 5px 45px 5px;
+        width: 450px;
     }
 
     .popup-close {
@@ -136,7 +136,7 @@
     }
 
     .popup-title {        
-        background-image: url('../img/contact-mini.png');
+        background-image: url('../assets/images/contact-mini.png');
         height: 22px;
     }
 
@@ -144,4 +144,26 @@
         width: 100%;        
         transform: translate(0%,0%);
     }
+
+    .wpcf7-form p textarea {
+        padding: 10px;
+        height: 150px;
+        width: 250px;
+    }
+
+    .wpcf7-form p input {
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #B8BBC2;
+        width: 250px;
+    }
+    
+    .wpcf7-submit{
+        cursor: pointer;
+        background-color: #d8d8d8;
+        width: 250px;
+    }
+
+
+
 }

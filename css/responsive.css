@@ -5,8 +5,8 @@
 @media screen and (min-width: 1500px) {
 
     .photo-item {
-            width: 680px; 
-            height: 600px; 
+            width: 580px; 
+            height: 500px; 
             position: relative;
             
         }
@@ -15,10 +15,6 @@
     
     
     }
-
-
-
-
 
 
 
@@ -28,8 +24,8 @@
 @media screen and (max-width: 1400px) {
 
     .photo-item {
-            width: 480px; 
-            height: 400px; 
+            width: 450px; 
+            height: 370px; 
             position: relative;
             
         }
@@ -39,14 +35,14 @@
     
     }
 
-    /*  -------------------------------------------------  Media query : max-width: 1089px --------------   */
+    /*  -------------------------------------------------  Media query : max-width: 1160px --------------   */
 
 
-@media screen and (max-width: 1089px) {
+@media screen and (max-width: 1160px) {
 
     .photo-item {
-            width: 450px; 
-            height: 370px; 
+            width: 380px; 
+            height: 300px; 
             position: relative;
             
         }
@@ -75,52 +71,11 @@
         width: 138px;
         }
     
-       /**/
-       .menu li a{
-        text-decoration:none;
-        text-transform:uppercase;
-        font-size:18px;
-        color:white;
-    }
-    
-      .menu-button-container {
-        display: flex;
-    
-      }
-      .menu {
-        position: absolute;
-        top: 0;
-        margin-top: 80px;
-        left: 0;
-        flex-direction: column;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-      }
-      #menu-toggle ~ .menu-primary-container .menu li {
-        height: 0;
-        margin: 0;
-        padding: 0;
-        border: 0;
-        transition: height 600ms cubic-bezier(0.23, 1, 0.32, 1);
-      }
-      #menu-toggle:checked ~ .menu-primary-container .menu li {
-       
-        height: 2.5em;
-        padding: 0.5em;
-        transition: height 2000ms cubic-bezier(0.23, 1, 0.32, 1);
-      }
-      .menu > li {
-        display: flex;
-        justify-content: center;
-        margin: 0;
-        padding: 1em 0;
-        width: 100%;
-        color: white;
-        background-color: #e00000;
-      }
+      
 
-       /**/
+   
+
+       /*---------------------------------------------------------------------------------------*/
         
         .btn-modal {
             opacity: 1;
@@ -157,8 +112,8 @@
        
       
         .photo-item {
-            width: 380px; 
-            height: 300px; 
+            width: 310px; 
+            height: 230px; 
             position: relative;
         }
         
@@ -192,17 +147,82 @@
     
     }
     
-    /*  -------------------------------------------------  Media query : max-width: 870px --------------   */
-    @media screen and (max-width: 870px) {
+    /*  -------------------------------------------------  Media query : max-width: 810px --------------   */
+    @media screen and (max-width: 810px) {
+       
+         /*-------------------------------------menu mobile------------------------------------*/
+
+         .menu{
+            display: none;
+       }
+       
+       .icon-burger {
+           display: block;
+           cursor: pointer;
+       }
+       
+       
+        
+       .burger-menu{
+            display:none;
+            background-color:#e00000;
+            position:absolute;
+            width:100%;
+            top:80px;
+            height:0;
+           
+            
+       }	
+       
+       .burger-menu.open{
+           display:block;
+            height:100vh;
+            animation: move-right 1s 0.5s both;
+       }	
+       
+       /* Pour faire apparaitre la moadle en descendant et avec agmentatation de l'opacité */
+       @keyframes move-right {
+           0% {
+             transform: translateX(800px);
+             opacity: 0;
+           }  
+           100% {
+             transform: translateY(0);
+             visibility: visible;
+           }
+         }
+                       
+	
+       
+       .menu-mobile{
+           display:flex;
+           flex-direction:column;
+           align-items: center;
+           justify-content: center;
+           gap:50px;
+       }
+       
+       .menu-mobile  li:first-child{
+           margin-top:100px;
+       }
+       
+       .menu-mobile  li a{
+           color:#fff;
+           font-size:24px;
+       }
+       
+       .menu-mobile  li a:hover{
+           font-weight:bold;
+       }
        
 
         
         .photo-item {
-            width: 340px; /* Largeur d'une photo */
-            height: 260px; /* Hauteur d'une photo */
+            width: 290px; 
+            height: 210px;
             position: relative;
             overflow: hidden;
-            margin-bottom: 20px; /* Espacement entre les lignes */
+            margin-bottom: 20px; 
         }
         
 
@@ -222,16 +242,26 @@
 
          /*  -------------------------------------------------  Media query : max-width: 780px --------------   */
     @media screen and (max-width: 780px) {
+
+        .wp-block-columns{
+            width: 80%;
+            margin: 20px auto;
+        }
        
-    
+        .photo-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; 
+            gap: 20px; 
+        }
    
         
         .photo-item {
-            width: 280px; /* Largeur d'une photo */
-            height: 200px; /* Hauteur d'une photo */
+            width: 380px; 
+            height: 300px; 
             position: relative;
             overflow: hidden;
-            margin-bottom: 20px; /* Espacement entre les lignes */
+            margin-bottom: 20px; 
         }
         
 
@@ -256,16 +286,17 @@
         .photo-grid {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center; /* Centrer les éléments horizontalement */
-            gap: 20px; /* Espacement entre les photos */
+            justify-content: center; 
+            gap: 20px; 
+           
         }
         
         .photo-item {
-            width: 480px; /* Largeur d'une photo */
-            height: 400px; /* Hauteur d'une photo */
+            width: 480px; 
+            height: 400px; 
             position: relative;
             overflow: hidden;
-            margin-bottom: 20px; /* Espacement entre les lignes */
+            margin-bottom: 20px; 
         }
         
         .photo-thumbnail {
@@ -276,7 +307,7 @@
         }
     
         #category-filter, #format-filter, #date-filter{
-            width: 380px;
+            width: 100%;
             height: 42px;
         }
     
@@ -286,7 +317,15 @@
             overflow: hidden;
         }
         
-    
+        .single-banner {
+            object-fit: contain !important;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            margin: auto;
+            background-size: cover;
+            margin-bottom: 50px;
+        }
     
     
       }

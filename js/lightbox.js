@@ -29,7 +29,7 @@ jQuery(document).ready(function($) {
                         category: photo.category,
                         order: photo.order // Ajouter l'attribut order à chaque photo
                     })).sort((a, b) => a.order - b.order);
-                    console.log("Tous les liens vers les images sont chargés :", photoFullLinksArray); // Vérifier le contenu de photoFullLinksArray
+                   
                     resolve(); // Résoudre la promesse une fois que les liens sont chargés
                 },
                 error: function(xhr, status, error) {
@@ -40,7 +40,6 @@ jQuery(document).ready(function($) {
         });
     }
 }
-
 
 
   // Fonction pour ouvrir la lightbox
@@ -86,8 +85,6 @@ function openLightbox(imageUrl) {
     $('body').append(lightbox);
 }
 
-
-   
 
     // Gestionnaire d'événements délégué pour les liens de la lightbox
     $(document).on("click", ".photo-full-link", function(event) {
@@ -159,7 +156,7 @@ function showPreviousImage() {
 // Attendre le chargement complet des liens vers les images avant d'ouvrir la lightbox
 loadAllPhotoLinks().then(function() {
     // Appeler la fonction pour ouvrir la lightbox ici
-    console.log("Tous les liens vers les images sont chargés :", photoFullLinksArray);
+
 }).catch(function(error) {
     console.error("Une erreur s'est produite lors du chargement des liens vers les images :", error);
 });

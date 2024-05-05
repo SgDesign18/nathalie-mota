@@ -23,9 +23,9 @@
 <div class="container-index">
     <div class="filtres">
         <div class="row g-5">
-            <div class="col-lg-6">
+            <div class="col-lg-6 filter-left custom">
 
-                <select id="category-filter" class="select-filter">
+                <select id="category-filter" class="select-filter" name="test">
                     <option value="">Catégories</option>
                     <?php
                     // Récupérer les termes de la taxonomie "categorie"
@@ -54,7 +54,7 @@
                     <?php endforeach; ?>
                 </select>
             </div>
-            <div class="col-lg-6 ">
+            <div class="col-lg-6 filter-right custom">
                 <select id="date-filter" class="select-filter">
                     <option value="">Trier par </option>
                     <option value="newest">Plus récente</option>
@@ -102,37 +102,7 @@ endif;
 </div><!--Fin content-->
 
 
-<script>
-    jQuery(document).ready(function($) {
-        const ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
 
-        let page = 1;
-        let canLoadMore = true;
-
-        $('#load-more-btn').on('click', function() {
-            if (canLoadMore) {
-                page++;
-                let data = {
-                    'action': 'load_more_photos',
-                    'page': page
-                };
-                $.ajax({
-                    url: ajaxurl,
-                    type: 'POST',
-                    data: data,
-                    success: function(response) {
-                        $('.photo-grid').append(response);
-                        updatePhotoFullLinksArray(); // Mettre à jour les liens vers les images complètes
-                        if (response.trim() == '') {
-                            canLoadMore = false;
-                            $('#load-more-btn').hide();
-                        }
-                    }
-                });
-            }
-        });
-    });
-</script>
 
 <?php get_footer(); ?>
 
