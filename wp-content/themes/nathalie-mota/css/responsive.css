@@ -1,0 +1,369 @@
+
+/*  -------------------------------------------------  Media query : max-width: 1500px --------------   */
+
+
+@media screen and (min-width: 1500px) {
+
+    .photo-item {
+            width: 580px; 
+            height: 500px; 
+            position: relative;
+            
+        }
+    
+    
+    
+    
+    }
+
+
+
+/*  -------------------------------------------------  Media query : max-width: 1300px --------------   */
+
+
+@media screen and (max-width: 1400px) {
+
+    .photo-item {
+            width: 450px; 
+            height: 370px; 
+            position: relative;
+            
+        }
+
+        .filtres select {
+            width: 220px;
+            height: 42px;
+          
+        }
+    
+    
+    
+    
+    }
+
+    /*  -------------------------------------------------  Media query : max-width: 1160px --------------   */
+
+
+@media screen and (max-width: 1160px) {
+
+    .photo-item {
+            width: 380px; 
+            height: 300px; 
+            position: relative;
+            
+        }
+
+        .filtres select {
+            width: 160px;
+            height: 42px;
+          
+        }
+    
+    }
+    
+    /*  -------------------------------------------------  Media query : max-width: 995px --------------   */
+    
+    
+    @media all and (max-width: 995px) {
+    
+        .title-hero img{
+            width: 80%;
+        }
+    
+        .hero-area .hero-thumbnail {
+            position: relative;
+            margin: auto;
+            align-items: center;
+            width: 100%;
+            max-height: 500px;
+            overflow: hidden;
+        }
+    
+        .container-header img {
+        width: 138px;
+        }
+    
+      
+
+   
+
+       /*---------------------------------------------------------------------------------------*/
+        
+        .btn-modal {
+            opacity: 1;
+       
+        }
+    
+        #menu-header .menu-header-menu-container,
+        #menu-header #modal-burger {
+            margin-right: 0;
+        }
+    
+        .cmd-img{
+            display: none;
+        }
+    
+        .space{
+            display: none !important;
+        }
+    
+        .photo-other img{
+            margin-bottom: 20px;
+        }
+    
+        .menu-footer li{
+            display: block;
+            text-align: center;
+        }
+
+        .menu-footer li:last-child{
+            margin-left: -20px;
+            
+        }
+    
+       
+      
+        .photo-item {
+            width: 310px; 
+            height: 230px; 
+            position: relative;
+        }
+        
+        .photo-thumbnail {
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            margin: 0; 
+        }
+    
+    
+        .filtres select {
+           display: flex;
+           flex-direction: column;
+      
+        }
+    
+        #date-filter{
+            margin-top: 20px;
+        }
+    
+    
+        #category-filter, #format-filter, #date-filter{
+            width: 480px;
+            height: 42px;
+        }
+    
+        .filter-right{
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        /*titre sigle*/
+
+        .single-title{
+            margin-top: 50px;
+        }
+    
+    
+    
+    }
+    
+    /*  ------------------  Media query : max-width: 810px --------------   */
+
+
+    @media screen and (max-width: 810px) {
+       
+         /*----------------menu mobile------------------*/
+
+         .menu{
+            display: none;
+       }
+       
+       .icon-burger {
+           display: block;
+           cursor: pointer;
+       }
+        
+       .burger-menu{
+            display:none;
+            background-color:#e00000;
+            position:absolute;
+            width:100%;
+            top:80px;
+            height:0;   
+       }	
+       
+       .burger-menu.open{
+           display:block;
+            height:100vh;
+            animation: move-right 1s 0.5s both;
+       }	
+       
+       /* Pour faire apparaitre le menu mobile de la droite */
+       @keyframes move-right {
+           0% {
+             transform: translateX(800px);
+             opacity: 0;
+           }  
+           100% {
+             transform: translateY(0);
+             visibility: visible;
+           }
+         }
+                         
+       .menu-mobile{
+           display:flex;
+           flex-direction:column;
+           align-items: center;
+           justify-content: center;
+           gap:50px;
+       }
+       
+       .menu-mobile  li:first-child{
+           margin-top:100px;
+       }
+       
+       .menu-mobile  li a{
+           color:#fff;
+           font-size:24px;
+       }
+       
+       .menu-mobile  li a:hover{
+           font-weight:bold;
+       }
+       
+
+        
+        .photo-item {
+            width: 290px; 
+            height: 210px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px; 
+        }
+        
+
+    
+        .hero-area .hero-thumbnail {
+            width: 100%;
+            max-height: 300px;
+            overflow: hidden;
+        }
+    
+
+         /*titre sigle*/
+
+        .single-title{
+            margin-top: 50px;
+        }
+    
+    
+    
+      }
+
+
+         /*  -------------------------------------------------  Media query : max-width: 780px --------------   */
+    @media screen and (max-width: 780px) {
+
+        .wp-block-columns{
+            width: 80%;
+            margin: 20px auto;
+        }
+       
+        .photo-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; 
+            gap: 20px; 
+        }
+   
+        
+        .photo-item {
+            width: 380px; 
+            height: 300px; 
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px; 
+        }
+        
+
+    
+        .hero-area .hero-thumbnail {
+            width: 100%;
+            max-height: 300px;
+            overflow: hidden;
+        }
+
+
+
+
+
+    }
+    
+    
+      /*  -------------------------------------------------  Media query : max-width: 568px --------------   */
+    @media screen and (max-width: 568px) {
+       
+    
+        .photo-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; 
+            gap: 20px; 
+           
+        }
+        
+        .photo-item {
+            width: 480px; 
+            height: 400px; 
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px; 
+        }
+        
+        .photo-thumbnail {
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            margin: 0; 
+        }
+    
+        #category-filter, #format-filter, #date-filter{
+            width: 100%;
+            height: 42px;
+        }
+    
+        .hero-area .hero-thumbnail {
+            width: 100%;
+            max-height: 200px;
+            overflow: hidden;
+        }
+        
+        .single-banner {
+            object-fit: contain !important;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            margin: auto;
+            background-size: cover;
+            margin-bottom: 50px;
+        }
+
+        .order-sm-1 {
+            -ms-flex-order: 1;
+            order: 1;
+          }
+          .order-sm-2 {
+            -ms-flex-order: 2;
+            order: 2;
+          }
+
+            /*titre sigle*/
+         
+        .single-title{
+            margin-top: 50px;
+            font-size: 48px !important;
+        }
+    
+    
+      }
