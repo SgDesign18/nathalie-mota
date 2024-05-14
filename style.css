@@ -1,0 +1,633 @@
+/*
+Theme Name: Nathalie Mota
+Description: Thème WordPress personnalisé pour Nathalie Mota Photographe
+Author: Sandrine Gaston
+Version: 1.0
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+html{
+    width: 100%;
+}
+
+body {
+    font-family: "Space Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+    width: 100vw;
+}
+
+a{
+    text-decoration: none !important;
+    color: #000000;
+}
+
+ul li{
+    list-style: none;
+}
+
+
+footer {
+    width: 100%;
+    height: 40px;
+    border-top: 2px solid black;
+}
+
+footer ul {
+    padding: 20px;
+    text-align: center;
+}
+
+.menu-footer li  {
+    display: inline-block;
+}
+
+.menu-footer li a {
+    display: inline-block;
+    text-decoration: none;
+    margin-right: 30px;
+    text-transform: uppercase;
+    color: black;
+}
+
+.menu-footer li a:hover {
+    color: #e00000;
+}
+
+#content {
+    padding-top: 80px;
+    width: 100% !important;
+    margin: 0 auto;
+}
+
+.container-index{
+    width: 80%;
+    margin: 10px auto;
+    
+}
+
+
+
+
+/*------------------------------------Menu----------------------------------------------*/
+#header{
+	position:fixed;
+	top:0;
+    display: flex;
+    background-color: #fff;
+	width:100%;
+	height:80px;
+    z-index: 9999;
+}
+
+.topnav{
+	display:flex;
+	width:90%;
+    height: 80px;
+	margin:0 auto;
+	flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+	background-color:white;
+}
+
+.menu li a:hover{
+    font-weight: bold;
+}
+
+.logo img {
+    width: 220px;
+    height: auto;
+	margin:40px;
+}
+
+.menu{
+	display:flex;
+	gap:30px;
+	margin-right:60px;
+    margin-top: 10px;
+}
+
+.icon-burger{
+    display: none;
+}
+
+.burger-menu{
+	display:none;
+	height:0;
+}
+
+
+
+
+
+  
+ 
+/*------------------------------------------------------------------------------------------------------------------------*/
+
+
+.hero {
+    margin-top: -50px;
+    height: 1000px;
+    background-color: rgb(129, 119, 119);
+}
+
+.card-img-top {
+    object-fit: cover !important;
+    width: 100%;
+    height: 300px;
+}
+
+#page-blog {
+    width: 80% !important;
+    margin: 20px auto !important;
+}
+
+.content-single-post {
+    width: 80% !important;
+    margin: 0 auto !important;
+}
+
+.single-banner {
+    object-fit: contain !important;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    margin: auto;
+    background-size: cover;
+    margin-bottom: 50px;
+}
+
+.single-banner img {
+    width: 100%;
+    background-size: cover;
+}
+
+
+.pagination-blog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+.site__navigation {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.site__navigation__prev,
+.site__navigation__next {
+    width: 45%;
+    text-align: center;
+}
+
+.site__navigation__prev img,
+.site__navigation__next img {
+    max-width: 100%;
+    height: auto;
+}
+
+.site__navigation__prev h4,
+.site__navigation__next h4 {
+    margin-top: 10px;
+}
+
+
+/* --------------------------------------------------- Hero banner ------------------------------------- */
+.hero-area .hero-thumbnail {
+    position: relative;
+    margin: auto;
+    align-items: center;
+    width: 100%;
+    max-height: 962px;
+    overflow: hidden;
+}
+
+.hero-area img {
+    margin: auto;
+    object-fit: cover;
+    object-position: 50% 50%;
+    min-width: 100%;
+    height: auto;
+    max-height: 966px;
+}
+
+.hero-area .title-hero {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+}
+
+
+/* --------------------------------------------------- Grille de photos ------------------------------------- */
+
+
+.photo-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px; /* Espacement entre les photos */
+}
+
+.photo-item {
+    width: 550px; /* Largeur d'une photo */
+    height: 470px; /* Hauteur d'une photo */
+    position: relative;
+    overflow: hidden;
+    
+}
+
+.photo-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin: 0;
+}
+
+/* --------------------------------------------------- Bouton afficher plus ------------------------------------- */
+
+.button-plus {
+    display: flex;
+    justify-content: center;
+    height: 250px;
+    align-items: center;
+}
+
+#load-more-btn {
+    text-align: center;
+    width: 272px;
+    height: 50px;
+    color: black;
+    border: 1px solid black;
+}
+
+#load-more-btn:hover {
+    cursor: pointer;
+    background-color: #E00000;
+}
+
+/* --------------------------------------------------- Hover sur image ------------------------------------- */
+
+.photo-reference {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    color: white;
+}
+
+.photo-category {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    color: white !important;
+}
+
+.photo-category a {
+    text-decoration: none;
+    color: white !important;
+}
+
+.photo-details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo-lightbox {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.single-lightbox {
+    position: absolute;
+    right: 30px;
+    top: 10px;
+}
+
+.overlay {
+    opacity: 0;
+}
+
+.photo-item:hover .overlay {
+    opacity: 1;
+    color: white !important;
+}
+
+.photo-item>img {
+    opacity: 1;
+}
+
+.photo-item:hover>img {
+    opacity: 0.5;
+}
+
+.photo-item:hover {
+    background-color: #000;
+}
+
+/*-----------------------------------------------------Filtres front-page ---------------------------------------------*/
+
+.filtres {
+
+    margin: 50px auto;
+}
+
+
+.filtres select {
+
+    text-transform: uppercase;
+    width: 260px;
+    height: 42px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    border: 1.3px solid #B8BBC2;
+    border-radius: 8px;
+    padding-top: 11px;
+    padding-right: 18px;
+    padding-bottom: 11px;
+    padding-left: 18px;
+    background-color: transparent;
+}
+
+/* Style du survol des options dans un menu déroulant */
+
+
+.select-filter option:hover {
+    background-color: #ffd6d6 !important; 
+    color: #000 !important; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+#category-filter, #format-filter, #date-filter{
+    width: 260px;
+    height: 42px;
+}
+
+.filter-left{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px; 
+
+}
+
+.filter-right{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+/*--------------------------------------Page Single Photo ---------------------------------------------*/
+
+.single-title {
+    font-size: 66px !important;
+    font-weight: 400;
+    text-transform: uppercase !important;
+    line-height: 58px;
+    word-spacing: 0px;
+}
+
+.hr {
+    border: 1px solid black;
+    background-color: #000;
+    width: 100%;
+    height: 1px;
+    display: block;
+}
+
+.space {
+    display: block;
+    height: 300px;
+}
+
+.single-img {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-left: 10px;
+}
+
+.section-title h2 {
+    width: 80%;
+}
+
+.infos p {
+    text-transform: uppercase;
+    font-size: 18px;
+}
+
+.single-cmd {
+    position: relative;
+    display: flex;
+    height: 120px;
+
+    justify-content: center;
+    align-items: center;
+}
+
+
+#btn-cmd {
+    text-align: center;
+    width: 100%;
+    height: 50px;
+    color: black;
+    border: 1px solid black;
+}
+
+#btn-cmd:hover {
+    cursor: pointer;
+    background-color: #E00000;
+}
+
+.typo2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    margin-top: 10px;
+}
+
+.single-other {
+    margin: 50px 0 50px 0;
+}
+
+.img-min {
+    position: absolute;
+    right: 15px;
+    top: -50px;
+    height: 71px;
+    width: 81px;
+    background-color: rgb(230, 228, 225);
+}
+
+
+
+.fleches {
+    position: absolute;
+    right: 25px;
+    bottom: -50px;
+}
+
+.arrow {
+    display: inline-block;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+
+
+.photo-other:hover .overlay {
+    opacity: 1;
+    color: white !important;
+}
+
+.photo-other>img {
+    opacity: 1;
+}
+
+.photo-other:hover>img {
+    opacity: 0.5;
+}
+
+.photo-other:hover {
+    background-color: #000;
+}
+
+/*---------------------------------------Lightbox --------------------------------------------------------*/
+
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox img {
+    max-width: 60%;
+    max-height: 70%;
+    object-fit: contain;
+
+}
+
+.photo-info {
+    position: absolute;
+    bottom: -30px; /* Ajuster la position verticale */
+    padding: 5px;
+    color: white;
+    text-align: center;
+    width: 60%;
+    box-sizing: border-box; /* Garder la largeur à 100% incluant le padding */
+}
+
+.reference{
+    position: absolute;
+    bottom: 0; /* Ajuster la position verticale */
+    left: 0;
+}
+
+.category{
+    position: absolute;
+    bottom: 0; /* Ajuster la position verticale */
+    right: 0;
+}
+
+
+
+/* Masquer les flèches par défaut */
+.close,
+.prev-btn,
+.next-btn {
+    display: none;
+}
+
+/* Afficher les flèches lorsque la lightbox est ouverte */
+.lightbox.active .close,
+.lightbox.active .prev-btn,
+.lightbox.active .next-btn {
+    display: block !important;
+}
+
+/* Ajouter du style aux flèches */
+.prev-btn,
+.next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 20px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+
+    color: rgba(255, 255, 255, 1);
+    cursor: pointer;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+.close{
+    position: absolute;
+    top:0;
+    right: 0;
+    font-size: 20px;
+    color: white;
+   
+}

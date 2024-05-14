@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 
 <div id="content">
+
     <?php
     // Boucle WordPress pour récupérer le contenu de la page 
     while (have_posts()) : the_post();
@@ -8,7 +9,6 @@
         the_content();
     endwhile;
     ?>
-
 
 </div>
 <?php get_footer(); ?>
