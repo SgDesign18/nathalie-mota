@@ -172,14 +172,14 @@ get_header(); ?>
                                                     <div class="overlay">
                                                         <span class="photo-details"><a href="<?php the_permalink(); ?>" class="photo-link" title="Voir les détails de la photo"><img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/eye.png'; ?>"></a></span>
                                                         <span class="photo-lightbox single-lightbox">
-                                                        <?php
-$other_thumbnail_url = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full')[0];
-?>
-<a href="<?php echo esc_url($other_thumbnail_url); ?>" class="photo-full-link" title="Afficher la photo" data-reference="<?php echo esc_attr(get_field('reference_de_la_photo')); ?>" data-category="<?php echo esc_attr(implode(', ', $category_names)); ?>">
+                                                            <?php
+                                                            $other_thumbnail_url = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full')[0];
+                                                            ?>
+                                                            <a href="<?php echo esc_url($other_thumbnail_url); ?>" class="photo-full-link" title="Afficher la photo" data-reference="<?php echo esc_attr(get_field('reference_de_la_photo')); ?>" data-category="<?php echo esc_attr(implode(', ', $category_names)); ?>">
 
 
-<img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/icon-full.png'; ?>" alt="Afficher la photo">
-</a>
+                                                                <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/icon-full.png'; ?>" alt="Afficher la photo">
+                                                            </a>
                                                             <!-- Flèches de navigation -->
                                                             <button class="close"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/croix.png" alt="fermer la photo"></button>
                                                             <button class="prev-btn"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/prev.png" alt="image précédente"></button>
@@ -187,7 +187,7 @@ $other_thumbnail_url = wp_get_attachment_image_src(get_post_thumbnail_id(), 'ful
                                                         </span>
                                                     </div>
                                                 </div>
-                                            </div>    
+                                            </div>
                                         </div>
                             <?php
                                     endwhile;
