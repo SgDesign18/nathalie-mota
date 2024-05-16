@@ -31,8 +31,7 @@ function add_custom_menu_item($items, $args)
 add_filter('wp_nav_menu_items', 'add_custom_menu_item', 10, 2);
 
 // Chargement des scripts et styles
-function theme_enqueue_scripts()
-{
+function theme_enqueue_scripts() {
     // Styles
     wp_enqueue_style('bootstrap-css', get_template_directory_uri() . '/css/bootstrap.css');
     wp_enqueue_style('theme-style', get_stylesheet_directory_uri() . '/style.css');
@@ -45,16 +44,22 @@ function theme_enqueue_scripts()
     wp_enqueue_script('scripts-more-photos', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0', true);
     wp_enqueue_script('scripts-filtres', get_template_directory_uri() . '/js/filtres.js', array('jquery'), '1.0', true);
     wp_enqueue_script('contact-scripts', get_template_directory_uri() . '/js/contact.js', array('jquery'), '1.0', true);
-    wp_enqueue_script('min-scripts', get_template_directory_uri() . '/js/min-photo.js', array('jquery'), '1.0', true);
 
-    // Passer l'URL AJAX pour le script JavaScript
-    wp_localize_script('scripts-lightbox', 'ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
-    wp_localize_script('scripts-more-photos', 'ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
-    wp_localize_script('scripts-filtres', 'ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
-    wp_localize_script('min-scripts', 'ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
+    // Charger min-photo.js uniquement sur la page single.php pour les types de post photo
+    if (is_singular('photo')) {
+        wp_enqueue_script('min-scripts', get_template_directory_uri() . '/js/min-photo.js', array('jquery'), '1.0', true);
+    }
 
+    // Tableau contenant les handles des scripts à localiser avec l'URL AJAX
+    $scripts = array('scripts-lightbox', 'scripts-more-photos', 'scripts-filtres');
+
+    // Boucler sur chaque handle pour localiser le script avec l'URL AJAX
+    foreach ($scripts as $script) {
+        wp_localize_script($script, 'ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
+    }
 }
 add_action('wp_enqueue_scripts', 'theme_enqueue_scripts');
+
 
 // Ajout font_awesome
 function add_font_awesome_stylesheet() {
@@ -63,35 +68,24 @@ function add_font_awesome_stylesheet() {
 add_action('wp_enqueue_scripts', 'add_font_awesome_stylesheet');
 
 
-    
-    
 
-
-
-
-
-// Bouton - Charger plus -------------------------------------------------------------------------------
+// Bouton - Charger plus 
 
 function load_more_photos()
 {
-    $paged = $_POST['page']; // Récupérer le numéro de page suivant
-    $category = isset($_POST['category']) ? $_POST['category'] : ''; // Récupérer la catégorie filtrée
-    $format = isset($_POST['format']) ? $_POST['format'] : ''; // Récupérer le format filtré
-    $date_order = isset($_POST['date']) ? $_POST['date'] : 'DESC'; // Récupérer l'ordre de tri par date
-
-    // Initialiser la variable loaded_photos si elle n'est pas définie
-    $loaded_photos = isset($_POST['loaded_photos']) ? $_POST['loaded_photos'] : array();
+    $paged = isset($_POST['page']) ? intval($_POST['page']) : 1; // Récupérer le numéro de page suivant
+    $category = isset($_POST['category']) ? sanitize_text_field($_POST['category']) : ''; // Récupérer la catégorie filtrée
+    $format = isset($_POST['format']) ? sanitize_text_field($_POST['format']) : ''; // Récupérer le format filtré
+    $date_order = isset($_POST['order']) ? sanitize_text_field($_POST['order']) : 'DESC'; // Récupérer l'ordre de tri par date
 
     $args = array(
         'post_type' => 'photo',
         'posts_per_page' => 8,
         'paged' => $paged,
         'orderby' => 'date',
-        'order' => 'DESC',
-        'post__not_in' => $loaded_photos, // Exclure les photos déjà chargées
+        'order' => $date_order, // Utiliser l'ordre spécifié
     );
 
-    // Ajouter les arguments de filtre seulement s'ils sont définis
     if (!empty($category)) {
         $args['tax_query'][] = array(
             'taxonomy' => 'categorie',
@@ -99,6 +93,7 @@ function load_more_photos()
             'terms' => $category,
         );
     }
+
     if (!empty($format)) {
         $args['tax_query'][] = array(
             'taxonomy' => 'format',
@@ -112,45 +107,34 @@ function load_more_photos()
     if ($query->have_posts()) {
         while ($query->have_posts()) {
             $query->the_post();
-            $photo_id = get_the_ID();
-            // Vérifier si la photo a déjà été chargée
-            if (!in_array($photo_id, $loaded_photos, true)) {
-                get_template_part('templates_part/grille_photos'); // Afficher le contenu des photos
-                // Ajouter l'identifiant de la photo à la liste des photos chargées
-                $loaded_photos[] = $photo_id;
-            }
+            get_template_part('templates_part/grille_photos');
         }
     }
 
     wp_reset_postdata();
-
-    // Terminer la réponse AJAX
     die();
 }
-
-add_action('wp_ajax_load_more_photos', 'load_more_photos'); // Pour les utilisateurs connectés
-add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos'); // Pour les utilisateurs non connectés
-
+add_action('wp_ajax_load_more_photos', 'load_more_photos');
+add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos');
 
 
-// Fonction pour charger les photos en fonction des filtres ---------------------------------------------------
+
+// Fonction pour charger les photos en fonction des filtres 
 function filter_photos()
 {
-
-    $paged = $_POST['page']; // Récupérer le numéro de page suivant
-    $category = isset($_POST['category']) ? $_POST['category'] : ''; // Récupérer la catégorie filtrée
-    $format = isset($_POST['format']) ? $_POST['format'] : ''; // Récupérer le format filtré
-    $date_order = isset($_POST['date']) ? $_POST['date'] : 'DESC'; // Récupérer l'ordre de tri par date
+    $paged = isset($_POST['page']) ? intval($_POST['page']) : 1;
+    $category = isset($_POST['category']) ? sanitize_text_field($_POST['category']) : '';
+    $format = isset($_POST['format']) ? sanitize_text_field($_POST['format']) : '';
+    $date_order = isset($_POST['date']) ? sanitize_text_field($_POST['date']) : 'DESC';
 
     $args = array(
         'post_type' => 'photo',
         'posts_per_page' => 8,
         'paged' => $paged,
-        'orderby' => 'date', // Tri par date de publication
-        'order' => $date_order, // Utiliser l'ordre spécifié plus haut
+        'orderby' => 'date',
+        'order' => $date_order,
     );
 
-    // Ajouter les arguments de filtre seulement s'ils sont définis
     if (!empty($category)) {
         $args['tax_query'][] = array(
             'taxonomy' => 'categorie',
@@ -158,6 +142,7 @@ function filter_photos()
             'terms' => $category,
         );
     }
+
     if (!empty($format)) {
         $args['tax_query'][] = array(
             'taxonomy' => 'format',
@@ -171,27 +156,25 @@ function filter_photos()
     if ($query->have_posts()) {
         while ($query->have_posts()) {
             $query->the_post();
-            get_template_part('templates_part/grille_photos'); // Afficher le contenu des photos
+            get_template_part('templates_part/grille_photos');
         }
     }
 
-    // Si aucune photo restante, masquer le bouton "Charger plus"
+    // Ajouter un champ caché pour indiquer s'il reste des photos à charger
     if ($query->max_num_pages <= $paged) {
-        echo ''; // Retourner une réponse vide pour indiquer qu'il n'y a plus de photos
+        echo '<div id="no-more-photos" style="display: none;"></div>';
     }
 
     wp_reset_postdata();
-
-    // Terminer la réponse AJAX
     die();
 }
-
-add_action('wp_ajax_filter_photos', 'filter_photos'); // Pour les utilisateurs connectés
-add_action('wp_ajax_nopriv_filter_photos', 'filter_photos'); // Pour les utilisateurs non connectés
-
+add_action('wp_ajax_filter_photos', 'filter_photos');
+add_action('wp_ajax_nopriv_filter_photos', 'filter_photos');
 
 
-// Fonction pour charger tous les liens vers les images - Lightbox ---------------------------------------------
+
+// Fonction pour charger toutes les images - Lightbox 
+
 function load_all_photo_links()
 {
     $args = array(
@@ -226,40 +209,27 @@ add_action('wp_ajax_load_all_photo_links', 'load_all_photo_links');
 add_action('wp_ajax_nopriv_load_all_photo_links', 'load_all_photo_links');
 
 
-// a vérifier ce code ! ------------------------------------------------------------------------------------
-function update_photo_links()
-{
-    $args = array(
-        'post_type' => 'photo', // Slug de CPT UI
-        'posts_per_page' => -1, // Récupérer toutes les photos
-        
-    );
 
-    $query = new WP_Query($args);
 
-    if ($query->have_posts()) {
-        $photoFullLinksArray = array();
-        while ($query->have_posts()) {
-            $query->the_post();
-            $thumbnail_url = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full')[0];
-            $photoFullLinksArray[] = array(
-                'href' => esc_url($thumbnail_url),
-                'reference' => get_field('reference_de_la_photo'),
-                'category' => get_the_terms(get_the_ID(), 'categorie'),
-            );
-        }
-        wp_reset_postdata();
-?>
-        <script type="text/javascript">
-            var photoFullLinksArray = <?php echo json_encode($photoFullLinksArray); ?>;
-        </script>
-<?php
-    }
+//  éviter que la taxonomie "format" entre en conflit avec l'une des propriétés existantes dans l'API REST de WordPress
+
+function custom_taxonomies() {
+    // Enregistrement de la taxonomie "format"
+    register_taxonomy('format', 'photo', array(
+        'labels' => array(
+            'name' => 'Formats',
+            'singular_name' => 'Format',
+            
+        ),
+        'public' => true,
+        'rewrite' => array('slug' => 'format'), // Détermine l'URL slug pour la taxonomie
+        'show_in_rest' => true, // Active la prise en charge de l'API REST pour cette taxonomie
+        'rest_base' => 'photo_format', // Définit la base personnalisée pour l'API REST afin d'éviter le conflit avec les propriétés existantes de l'API REST
+    ));
 }
-add_action('wp_head', 'update_photo_links');
 
+add_action('init', 'custom_taxonomies');
 
-// Miniature dans page single ---------------------------------------------------------------------------------
 
 
 

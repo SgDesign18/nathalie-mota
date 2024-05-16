@@ -1,0 +1,6 @@
+[15-May-2024 17:51:04 UTC] PHP Warning:  Undefined variable $photosData in C:\wamp64\www\nathalie-mota\wp-content\themes\nathalie-mota\single.php on line 13
+[15-May-2024 17:51:04 UTC] PHP Stack trace:
+[15-May-2024 17:51:04 UTC] PHP   1. {main}() C:\wamp64\www\nathalie-mota\index.php:0
+[15-May-2024 17:51:04 UTC] PHP   2. require() C:\wamp64\www\nathalie-mota\index.php:17
+[15-May-2024 17:51:04 UTC] PHP   3. require_once() C:\wamp64\www\nathalie-mota\wp-blog-header.php:19
+[15-May-2024 17:51:04 UTC] PHP   4. include() C:\wamp64\www\nathalie-mota\wp-includes\template-loader.php:106

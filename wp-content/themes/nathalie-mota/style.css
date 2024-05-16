@@ -450,6 +450,7 @@ footer ul {
 #btn-cmd:hover {
     cursor: pointer;
     background-color: #E00000;
+    color: #fff;
 }
 
 .typo2 {
@@ -663,4 +664,18 @@ footer ul {
 
 .btn-blog a:hover{
     color:white;
+}
+
+.etiquettes{
+    margin: 60px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.etiquettes a{
+    color: #E00000;
+}
+
+.etiquettes a:hover{
+    font-weight: 600;
 }

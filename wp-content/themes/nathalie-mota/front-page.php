@@ -1,13 +1,5 @@
 <?php get_header(); ?>
 
-<script>
-    const ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
-    const imageDirectory = '<?php echo get_template_directory_uri(); ?>/assets/images/';
-</script>
-
-<script src="<?php echo get_template_directory_uri(); ?>/js/lightbox.js"></script>
-
-
 <div id="content">
     <!-- Chargement de la bannière -->
     <?php get_template_part('templates_part/banner'); ?>
@@ -97,3 +89,11 @@
 
 
 <?php get_footer(); ?>
+
+
+<script>
+    const ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
+    const imageDirectory = '<?php echo get_template_directory_uri(); ?>/assets/images/';
+</script>
+
+<script src="<?php echo get_template_directory_uri(); ?>/js/lightbox.js"></script>

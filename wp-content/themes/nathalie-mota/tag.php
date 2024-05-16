@@ -1,14 +1,4 @@
-<?php 
-
-/**
- * Home : Page accueil du Blog
- *
- * @package WordPress
- * @subpackage nathalie-mota
- */
-
-
-get_header(); ?>
+<?php get_header(); ?>
 
 <div id="wrap">
     <section id="content">
@@ -31,17 +21,13 @@ get_header(); ?>
                         </div>
                     </div>
                 <?php endwhile; ?>
-
             <?php else : ?>
                 <div class="col">
                     <p>Aucun article trouvé.</p>
                 </div>
             <?php endif; ?>
         </div>
-        
-        <div class="pagination-blog"><?php the_posts_pagination(); ?></div>
     </section>
 </div>
-
 
 <?php get_footer(); ?>

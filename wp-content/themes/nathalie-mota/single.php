@@ -1,7 +1,7 @@
 <?php
 
 /**
- * The single : Single photo 
+ * Single : Single photo 
  *
  * @package WordPress
  * @subpackage Nathalie-Mota
@@ -9,6 +9,7 @@
 
 get_header(); ?>
 
+<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/min-photo.js"></script>
 
 <div id="wrap">
     <section id="content">
@@ -199,8 +200,6 @@ get_header(); ?>
                             ?>
                         </div>
 
-
-
                     </div><!--fin container-->
                 </div><!--fin container-fluid-->
 
@@ -211,48 +210,51 @@ get_header(); ?>
 </div>
 
 
+<?php get_footer(); ?>
+
+
 <!--------------------- Création d'un tableau pour récupérer les photos de mon CPT UI ----------------------------------->
 
 
 <?php
-// Récupérer tous les ID des photos du CPT UI avec leurs URL
-$args = array(
-    'post_type' => 'photo', // slug  CPT UI
-    'posts_per_page' => -1, // Récupérer tous les posts
-);
+if (is_singular('photo')) {
+    // Récupérer tous les ID des photos du CPT UI avec leurs URL
+    $args = array(
+        'post_type' => 'photo', // slug CPT UI
+        'posts_per_page' => -1, // Récupérer tous les posts
+    );
 
-$query = new WP_Query($args);
+    $query = new WP_Query($args);
 
-// Tableau JavaScript pour stocker les informations des photos
-$photos_data = array();
+    // Tableau JavaScript pour stocker les informations des photos
+    $photos_data = array();
 
-if ($query->have_posts()) :
-    while ($query->have_posts()) : $query->the_post();
-        $photo_data = array(
-            'id' => get_the_ID(),
-            'permalink' => get_permalink(),
-            'thumbnail_url' => get_the_post_thumbnail_url(get_the_ID(), 'min'),
-        );
-        $photos_data[] = $photo_data;
-    endwhile;
-    wp_reset_postdata();
-endif;
+    if ($query->have_posts()) :
+        while ($query->have_posts()) : $query->the_post();
+            $photo_data = array(
+                'id' => get_the_ID(),
+                'permalink' => get_permalink(),
+                'thumbnail_url' => get_the_post_thumbnail_url(get_the_ID(), 'min'),
+            );
+            $photos_data[] = $photo_data;
+        endwhile;
+        wp_reset_postdata();
+    endif;
 
-// Convertir le tableau PHP en chaîne JSON pour le transmettre à JavaScript
-$photos_data_json = json_encode($photos_data);
+    // Convertir le tableau PHP en chaîne JSON pour le transmettre à JavaScript
+    $photos_data_json = wp_json_encode($photos_data);
 
-// Ajouter le script JavaScript dans la page pour initialiser le tableau
+    // Ajouter le script JavaScript dans la page pour initialiser le tableau
+    ?>
+    <script>
+    let photosData = <?php echo json_encode($photos_data); ?>;
+    </script>
+    <?php
+}
 ?>
-<script>
-    var photosData = <?php echo $photos_data_json; ?>;
-</script>
-
-
-<!--------------------- Fin tableau pour récupérer les photos de mon CPT UI ----------------------------------->
 
 
 
-<?php get_footer(); ?>
 
 <script>
     const ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';

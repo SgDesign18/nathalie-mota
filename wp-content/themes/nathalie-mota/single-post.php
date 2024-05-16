@@ -1,4 +1,14 @@
-<?php get_header(); ?>
+<?php 
+
+/**
+ * single-post : Page d'un article
+ *
+ * @package WordPress
+ * @subpackage nathalie-mota
+ */
+
+
+get_header(); ?>
 
 <div id="container">
 	<section id="single-post">
@@ -11,8 +21,10 @@
 				</div>
 		<?php endwhile;
 		endif; ?>
-	</section>
 
+        <div class="etiquettes"><?php the_tags('Cet article parle de : ', ' / ', ''); ?></div>
+	</section>
+	
 	<hr>
 	<article class="pagination-blog">
 		<h3>A voir aussi ...</h3>
