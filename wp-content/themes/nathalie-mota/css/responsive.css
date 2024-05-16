@@ -1,24 +1,19 @@
 
-/*  -------------------------------------------------  Media query : max-width: 1500px --------------   */
+/*  -------------------------------------------------  Media query : max-width: 1800px --------------   */
 
 
-@media screen and (min-width: 1500px) {
+@media screen and (min-width: 1800px) {
 
     .photo-item {
-            width: 580px; 
-            height: 500px; 
-            position: relative;
-            
-        }
-    
-    
-    
+            width: 780px; 
+            height: 700px; 
+            position: relative;  
+        } 
     
     }
 
 
-
-/*  -------------------------------------------------  Media query : max-width: 1300px --------------   */
+/*  --------------------------------------  Media query : max-width: 1300px --------------   */
 
 
 @media screen and (max-width: 1400px) {
@@ -32,16 +27,12 @@
 
         .filtres select {
             width: 220px;
-            height: 42px;
-          
-        }
-    
-    
-    
+            height: 42px; 
+        }  
     
     }
 
-    /*  -------------------------------------------------  Media query : max-width: 1160px --------------   */
+    /*  ---------------------------------  Media query : max-width: 1160px --------------   */
 
 
 @media screen and (max-width: 1160px) {
@@ -49,19 +40,17 @@
     .photo-item {
             width: 380px; 
             height: 300px; 
-            position: relative;
-            
+            position: relative;          
         }
 
         .filtres select {
             width: 160px;
-            height: 42px;
-          
+            height: 42px;       
         }
     
     }
     
-    /*  -------------------------------------------------  Media query : max-width: 995px --------------   */
+    /*  -------------------------------  Media query : max-width: 995px --------------   */
     
     
     @media all and (max-width: 995px) {
@@ -82,16 +71,9 @@
         .container-header img {
         width: 138px;
         }
-    
-      
-
-   
-
-       /*---------------------------------------------------------------------------------------*/
         
         .btn-modal {
             opacity: 1;
-       
         }
     
         #menu-header .menu-header-menu-container,
@@ -117,11 +99,8 @@
         }
 
         .menu-footer li:last-child{
-            margin-left: -20px;
-            
-        }
-    
-       
+            margin-left: -20px;       
+        }   
       
         .photo-item {
             width: 310px; 
@@ -139,8 +118,7 @@
     
         .filtres select {
            display: flex;
-           flex-direction: column;
-      
+           flex-direction: column;     
         }
     
         #date-filter{
@@ -231,8 +209,6 @@
        .menu-mobile  li a:hover{
            font-weight:bold;
        }
-       
-
         
         .photo-item {
             width: 290px; 
@@ -241,8 +217,6 @@
             overflow: hidden;
             margin-bottom: 20px; 
         }
-        
-
     
         .hero-area .hero-thumbnail {
             width: 100%;
@@ -262,7 +236,7 @@
       }
 
 
-         /*  -------------------------------------------------  Media query : max-width: 780px --------------   */
+         /*  ---------------------------------  Media query : max-width: 780px --------------   */
     @media screen and (max-width: 780px) {
 
         .wp-block-columns{
@@ -285,8 +259,6 @@
             overflow: hidden;
             margin-bottom: 20px; 
         }
-        
-
     
         .hero-area .hero-thumbnail {
             width: 100%;
@@ -295,13 +267,10 @@
         }
 
 
-
-
-
     }
     
     
-      /*  -------------------------------------------------  Media query : max-width: 568px --------------   */
+      /*  ----------------------------------------  Media query : max-width: 568px --------------   */
     @media screen and (max-width: 568px) {
        
     
@@ -362,7 +331,7 @@
          
         .single-title{
             margin-top: 50px;
-            font-size: 48px !important;
+            font-size: 40px !important;
         }
     
     

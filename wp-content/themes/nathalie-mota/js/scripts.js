@@ -1,3 +1,5 @@
+// Bouton charger plus
+
 jQuery(document).ready(function($) {
     var loadedPhotos = [];
     var page = 1;

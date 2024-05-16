@@ -36,7 +36,8 @@ jQuery(document).ready(function($) {
 });
 
 
-// Couleur des filtres
+// Couleur des filtres à revoir
+
 document.addEventListener("DOMContentLoaded", function() {
     const selectFilters = document.querySelectorAll('.select-filter');
     // Ajoute un écouteur d'événements à chaque menu déroulant
